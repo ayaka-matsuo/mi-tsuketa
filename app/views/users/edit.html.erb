@@ -1,2 +1,52 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>登録情報編集</h1>
+
+<table class="table form-group">
+                    <tbody>
+                      <%= form_for(@user) do |f| %>
+                        <tr>
+                          <td>
+                          	<%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>ニックネーム</td>
+                          <td>
+                          	<%= f.text_field :name, autofocus: true %>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>お住まいの都道府県</td>
+                            <td><%= f.text_field :place, autofocus: true %></td>
+                        </tr>
+                        <tr>
+                            <td>性別</td>
+                            <td>
+                            <%= f.select :sex, {'男性': 1, '女性': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ご年齢</td>
+                            <td>
+                           <%= f.text_field :age, autofocus: true %><%="歳"%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>メールアドレス</td>
+                            <td><%= f.text_field :email %></td>
+                        </tr>
+                        <tr>
+                            <td>ご趣味</td>
+                            <td><%= f.text_field :hobby %></td>
+                        </tr>
+                        <tr>
+                            <td>自己紹介</td>
+                            <td><%= f.text_field :introduction %></td>
+                        </tr>
+                        <tr>
+                        	<td><%= f.submit "変更を保存する", class: "btn-sm btn-primary" %></td>
+                            <td></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+        </table>

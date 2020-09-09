@@ -4,11 +4,10 @@
 	<tbody>
 		<% @child_archives.each do |child_archive| %>
 			<tr>
-
-				<%#= attachment_image_tag(child_archive, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
-
+				<td>
+					<%= attachment_image_tag child_archive, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
+				</td>
 				<td><%= child_archive.created_at %>
-					
 				</td>
 
 				<td>

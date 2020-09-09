@@ -31,7 +31,7 @@
 		</table>
 
 
-<%= form_with(model: [@toy, @review], local: true, url: {action: 'confirm'}) do |f| %>
+<%= form_for [@toy, @review], url: confirm_toy_reviews_path do |f| %>
 
   <div class="row">
   	<div class="col-sm-12">

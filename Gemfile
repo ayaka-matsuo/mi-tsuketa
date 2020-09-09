@@ -50,6 +50,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
@@ -66,3 +67,6 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'pry-byebug'
+gem 'will_paginate',           '3.1.6'
+gem 'bootstrap-will_paginate', '1.0.0'

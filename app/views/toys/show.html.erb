@@ -33,6 +33,17 @@
 			</tbody>
 		</table>
 
+	<h3>口コミ一覧</h3>
+		<% @toy.reviews.each do |review| %>
+			<p>レビューポイント</p>
+    			<p><%= review.review_point %></p>
+    		<p>内容</p>
+    			<p><%= review.body %></p>
+    		<p>効果</p>
+    			<p><%= review.effect.name %></p>
+    	<% end %>
+
+
 				 <%= link_to '編集する', edit_toy_path(@toy), class: 'btn btn-primary' %>
 				 <%= link_to '商品一覧に戻る', toys_path, class: 'btn btn-primary' %>
 

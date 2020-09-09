@@ -1,11 +1,69 @@
-<%= form_for @review do |f| %>
-  <%= @review.review_point %>
-  <%= @review.effect.name %>
-  <%= @review.effect.body %>
+<h2>口コミ確認画面</h2>
+
+<table class="table">
+			<tbody>
+				<tr>
+	  				<th>メーカー</th>
+	  				<th><%= @toy.manufacturer %></th>
+  				</tr>
+
+	  			<tr>
+	  				<th>商品名</th>
+	  				<th>
+	  				<%= @toy.name %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>価格</th>
+	  				<th><%= @toy.price %>円
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>商品説明</th>
+	  				<th><%= @toy.toy_introduction %></th>
+  				</tr>
+
+			</tbody>
+		</table>
+
+		<tbody>
+				<tr>
+	  				<th>口コミポイント</th>
+	  				<th><%= @review.review_point %></th>
+  				</tr>
+
+	  			<tr>
+	  				<th>口コミ</th>
+	  				<th>
+	  				<%= @review.body %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>効果</th>
+	  				<th><%= @review.effect.name %>
+	  				</th>
+  				</tr>
+
+			</tbody>
+		</table>
+
+
+
+
+<%= simple_form_for [@toy,@review] do |f| %>
+  <%= f.input :review_point, as: :hidden %>
+  <%= f.input :effect_id, as: :hidden %>
+  <%= f.input :body, as: :hidden %>
+
 <div class="actions">
     <%= f.submit '投稿画面に戻る', name: 'back' %>
-  </div>
-  <div class="actions">
+</div>
+
+<div class="actions">
     <%= f.submit '投稿する' %>
-  </div>
+</div>
+
 <% end %>

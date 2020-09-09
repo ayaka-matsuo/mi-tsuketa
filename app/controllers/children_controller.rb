@@ -24,6 +24,7 @@ class ChildrenController < ApplicationController
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
+      child_archive.profile_image_id = @child.profile_image_id
       child_archive.user_id = current_user.id
       child_archive.save
 
@@ -61,6 +62,7 @@ class ChildrenController < ApplicationController
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
+      child_archive.profile_image_id = @child.profile_image_id
       child_archive.user_id = current_user.id
       child_archive.save
 

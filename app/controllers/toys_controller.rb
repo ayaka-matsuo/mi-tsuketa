@@ -19,7 +19,7 @@ class ToysController < ApplicationController
   end
 
   def index
-    @toys = Toy.all
+    @toys = Toy.paginate(page: params[:page], per_page: 5).search(params[:search])
   end
 
   def edit

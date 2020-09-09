@@ -5,8 +5,11 @@ Rails.application.routes.draw do
 
 resources :users, only: [:show, :edit, :update]
 resources :toys do
-	resources :reviews
- 	post 'reviews/confirm'
+	resources :reviews do
+		collection do
+      		post :confirm
+    	end
+    end
 end
 resources :genres, only: [:new, :index, :create, :edit, :update]
 resources :children, only: [:index, :show, :new, :create, :edit, :update]

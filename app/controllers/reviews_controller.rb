@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+
   def new
     @toy = Toy.find(params[:toy_id])
     @review = current_user.reviews.new
@@ -7,16 +8,19 @@ class ReviewsController < ApplicationController
   def confirm
     @toy = Toy.find(params[:toy_id])
     @review = current_user.reviews.new(review_params)
-    render :new if @review.invalid?
   end
 
   def create
     @toy = Toy.find(params[:toy_id])
     @review = current_user.reviews.new(review_params)
-    @review.toy_id = toy.id
+    @review.toy_id = @toy.id
     @review.user.id = current_user.id
-    @review.save
-    redirect_to toy_path(@toy)
+      if @review.save
+        redirect_to toy_path(@toy)
+        flash[:notice] = "口コミを投稿しました"
+      else
+        render :new and return if params[:back]
+      end
   end
 
   def index

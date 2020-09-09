@@ -11,6 +11,12 @@
 		<table class="table">
 
               <tr>
+                <td>
+                  <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+                </td>
+              </tr>
+
+              <tr>
                 <th class="active">性格タイプ</th>
                 <td>
                 	<%= f.label :temperament, '気質' %>
