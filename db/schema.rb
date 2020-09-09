@@ -1,0 +1,99 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema.define(version: 2020_09_08_073540) do
+
+  create_table "child_archives", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "age_year"
+    t.integer "temperament"
+    t.boolean "environment"
+    t.text "favorite_thing"
+    t.text "un_favorite_thing"
+    t.text "status"
+    t.string "profile_image_id"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "age_month"
+    t.integer "user_id"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "sex"
+    t.integer "age_year"
+    t.integer "temperament"
+    t.boolean "environment"
+    t.string "name"
+    t.text "favorite_thing"
+    t.text "un_favorite_thing"
+    t.text "status"
+    t.string "profile_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "age_month"
+  end
+
+  create_table "effects", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "toy_id"
+    t.integer "review_point"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "effect_id"
+  end
+
+  create_table "toys", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.text "manufacturer"
+    t.string "toy_image_id"
+    t.text "toy_introduction"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name"
+    t.integer "age"
+    t.integer "sex"
+    t.text "introduction"
+    t.text "hobby"
+    t.string "profile_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "place"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+end

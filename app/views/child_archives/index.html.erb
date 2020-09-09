@@ -1,0 +1,23 @@
+<h1>おもいで</h1>
+
+<table class="table">
+	<tbody>
+		<% @child_archives.each do |child_archive| %>
+			<tr>
+
+				<%#= attachment_image_tag(child_archive, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
+
+				<td><%= child_archive.created_at %>
+					
+				</td>
+
+				<td>
+					<%= child_archive.child.name %>
+				</td>
+				<td>
+				 <%= link_to '詳しくみる', child_archive_path(child_archive.id), class: 'btn btn-primary' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

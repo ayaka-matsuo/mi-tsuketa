@@ -1,0 +1,59 @@
+
+
+<h2>おもちゃ詳細画面</h2>
+
+		<%#= attachment_image_tag @toy, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+
+		<table class="table">
+			<tbody>
+
+				<tr>
+	  				<th>メーカー</th>
+	  				<th><%= @toy.manufacturer %></th>
+  				</tr>
+
+	  			<tr>
+	  				<th>商品名</th>
+	  				<th>
+	  				<%= @toy.name %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>価格</th>
+	  				<th><%= @toy.price %>円
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>商品説明</th>
+	  				<th><%= @toy.toy_introduction %></th>
+  				</tr>
+
+			</tbody>
+		</table>
+
+				 <%= link_to '編集する', edit_toy_path(@toy), class: 'btn btn-primary' %>
+				 <%= link_to '商品一覧に戻る', toys_path, class: 'btn btn-primary' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

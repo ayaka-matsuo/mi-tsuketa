@@ -1,0 +1,14 @@
+<h2>ジャンル登録</h2>
+
+ <%= form_for(@genre) do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>名前</td>
+        <td><%= f.text_field :name %></td>
+        <td></td>
+      </tr>
+        <td><%= f.submit "新規登録", class: "btn-sm btn-primary" %></td>
+      <% end %>
+  </tbody>
+</table>

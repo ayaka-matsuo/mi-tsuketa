@@ -1,0 +1,61 @@
+<h1>こども情報編集ページ</h1>
+
+<%= form_for(@child) do |f| %>
+
+		<table class="table">
+              <tr>
+                <th class="active">ニックネーム</th>
+                <td><%= f.text_field :name, autofocus: true %>
+                </td>
+              </tr>
+
+              <tr>
+                <th class="active">性別</th>
+                <td>
+                	<%= f.label :sex, '性別' %>
+                  	<%= f.select :sex, {'男の子': 1, '女の子': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">年齢</th>
+                <td>
+                  <%= f.text_field :age_year, autofocus: true %>歳
+                  <%= f.text_field :age_month, autofocus: true %>ヶ月
+                </td>
+              </tr>
+
+              <tr>
+                <th class="active">気質</th>
+                <td>
+                	<%= f.label :temperament, '気質' %>
+   					<%= f.select :temperament, {'エンジェルタイプ': 1, 'テキストタイプ': 2, 'アクティブタイプ': 3, 'デリケートタイプ': 4, 'ネガティブタイプ': 5}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+  			    </td>
+              </tr>
+
+              <tr>
+                <th class="active">お住まいの種類</th>
+                <td>
+                  <%= f.select :environment, {'マンション・アパート': true, '一軒家': false}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">好きなもの</th>
+                <td>
+                  <%= f.text_field :favorite_thing, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">嫌いなもの</th>
+                <td>
+                  <%= f.text_field :un_favorite_thing, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">最近よく話す言葉・口癖</th>
+                <td>
+                  <%= f.text_field :status, autofocus: true %>
+                </td>
+              </tr>
+		</table>
+        	　<%= f.submit "編集する",class: "btn btn-success" %>
+<% end %>

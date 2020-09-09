@@ -1,0 +1,44 @@
+<h1>登録済みのお子様一覧</h1>
+
+
+<table class="table">
+	<tbody>
+		<% @user.children.each do |child| %>
+			<tr>
+
+				<%#= attachment_image_tag(child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
+
+				<td>
+					<%= child.name %>
+				</td>
+				<td>
+					<% if child.sex == 1 %>
+                		<%= "男の子" %>
+                	<% else %>
+                		<%= "女の子" %>
+                	<% end %>
+				</td>
+				<td>
+					<%= child.age_year %>歳
+					<%= child.age_month %>ヶ月
+				</td>
+				<td>
+					<% if child.temperament == 1 %>
+                		<%= "エンジェルタイプ" %>
+                	<% elsif child.temperament == 2 %>
+                		<%= "テキストタイプ" %>
+                	<% elsif child.temperament == 3 %>
+                		<%= "アクティブタイプ" %>
+                	<% elsif child.temperament == 4 %>
+                		<%= "デリケートタイプ" %>
+                	<% else %>
+                		<%= "ネガティブタイプ" %>
+                	<% end %>
+				</td>
+				<td>
+				 <%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary' %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

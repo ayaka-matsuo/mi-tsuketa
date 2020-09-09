@@ -1,0 +1,11 @@
+<%= form_for @review do |f| %>
+  <%= @review.review_point %>
+  <%= @review.effect.name %>
+  <%= @review.effect.body %>
+<div class="actions">
+    <%= f.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '投稿する' %>
+  </div>
+<% end %>

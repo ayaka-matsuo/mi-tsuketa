@@ -1,0 +1,17 @@
+<h1>効果一覧</h1>
+
+<table class="table">
+	<tbody>
+		<% @effects.each do |effect| %>
+			<tr>
+				<td>
+					<%= effect.id %>
+				</td>
+
+				<td>
+					<%= effect.name %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

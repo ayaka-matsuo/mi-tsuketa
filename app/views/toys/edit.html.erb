@@ -1,0 +1,43 @@
+<h1>おもちゃ情報編集</h1>
+
+<h1>おもちゃ情報登録</h1>
+
+ <%= form_for(@toy) do |f| %>
+  <%#= f.attachment_field :toy_image %>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>商品名</td>
+        <td><%= f.text_field :name %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>メーカー</td>
+        <td><%= f.text_field :manufacturer %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>商品説明</td>
+        <td><%= f.text_area :toy_introduction %></td>
+      </tr>
+      <tr>
+        <td>ジャンル</td>
+        <td><%= f.select :genre_id, Genre.all.map{ |genre| [genre.name, genre.id]} %></td>
+      </tr>
+      <tr>
+        <td>価格</td>
+        <td><%= f.text_field :price %>円</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= f.submit "新規登録", class: "btn-sm btn-primary" %></td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

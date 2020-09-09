@@ -1,0 +1,49 @@
+<h1>口コミ投稿</h1>
+
+<%#= attachment_image_tag @toy, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+
+		<table class="table">
+			<tbody>
+				<tr>
+	  				<th>メーカー</th>
+	  				<th><%= @toy.manufacturer %></th>
+  				</tr>
+
+	  			<tr>
+	  				<th>商品名</th>
+	  				<th>
+	  				<%= @toy.name %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>価格</th>
+	  				<th><%= @toy.price %>円
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>商品説明</th>
+	  				<th><%= @toy.toy_introduction %></th>
+  				</tr>
+
+			</tbody>
+		</table>
+
+
+<%= form_with(model: [@toy, @review], local: true, url: {action: 'confirm'}) do |f| %>
+
+  <div class="row">
+  	<div class="col-sm-12">
+      <%= f.text_area :review_point, class: "form-control" %>
+    </div>
+    <div class="col-sm-12">
+      <%= f.select :effect_id, Effect.all.map{ |effect| [effect.name, effect.id]} %>
+    </div>
+    <div class="col-sm-12">
+      <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+    </div>
+
+  </div>
+  <%= f.submit "確認画面へ", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>

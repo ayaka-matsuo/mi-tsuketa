@@ -1,0 +1,103 @@
+
+<h2>こども詳細画面</h2>
+
+		<%#= attachment_image_tag @child, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+
+		<table class="table">
+			<tbody>
+
+				<tr>
+	  				<th>ニックネーム</th>
+	  				<th><%= @child.name %></th>
+  				</tr>
+
+	  			<tr>
+	  				<th>性別</th>
+	  				<th>
+	  					<% if @child.sex == 1 %>
+                			<%= "男の子" %>
+                		<% else %>
+                			<%= "女の子" %>
+                		<% end %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>ご年齢</th>
+	  				<th><%= @child.age_year %>歳
+						<%= @child.age_month %>ヶ月
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>性格タイプ</th>
+	  				<th>
+	  					<% if @child.temperament == 1 %>
+                			<%= "エンジェルタイプ" %>
+                		<% elsif @child.temperament == 2 %>
+                			<%= "テキストタイプ" %>
+                		<% elsif @child.temperament == 3 %>
+                			<%= "アクティブタイプ" %>
+                		<% elsif @child.temperament == 4 %>
+                			<%= "デリケートタイプ" %>
+                		<% else %>
+                			<%= "ネガティブタイプ" %>
+                		<% end %>
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>お住まいの種類</th>
+	  				<th>
+	  					<% if @child.environment == true %>
+                			<%= "マンション・アパート" %>
+                		<% else %>
+                			<%= "一軒家" %>
+                		<% end %>
+	  				</th>
+	  			</tr>
+
+	  			<tr>
+	  				<th>好きなもの</th>
+	  				<th><%= @child.favorite_thing %>
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>嫌いなもの</th>
+	  				<th><%= @child.un_favorite_thing %>
+	  				</th>
+  				</tr>
+
+  				<tr>
+	  				<th>最近覚えた言葉・口癖</th>
+	  				<th><%= @child.status %>
+	  				</th>
+  				</tr>
+			</tbody>
+		</table>
+
+				 <%= link_to '編集する', edit_child_path(@child.id), class: 'btn btn-primary' %>
+				 <%= link_to 'おもいでをみる', child_archives_path(@child.id), class: 'btn btn-primary' %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

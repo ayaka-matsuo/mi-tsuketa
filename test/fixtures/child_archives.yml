@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child_id: 1
+  age: 1
+  temperament: 1
+  environment: false
+  favorite_thing: MyText
+  un_favorite_thing: MyText
+  status: MyText
+  profile_image_id: 1
+  memo: MyText
+  created_at: 2020-09-05 10:31:38
+  updated_at: 2020-09-05 10:31:38
+
+two:
+  child_id: 1
+  age: 1
+  temperament: 1
+  environment: false
+  favorite_thing: MyText
+  un_favorite_thing: MyText
+  status: MyText
+  profile_image_id: 1
+  memo: MyText
+  created_at: 2020-09-05 10:31:38
+  updated_at: 2020-09-05 10:31:38

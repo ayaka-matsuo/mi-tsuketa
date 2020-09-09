@@ -1,0 +1,56 @@
+<h1>おもいで編集</h1>
+
+				<%= @child_archive.created_at %>
+	  			<%= @child_archive.child.name %>
+	  			<%= @child_archive.age_year %>歳
+				<%= @child_archive.age_month %>ヶ月
+
+
+<%= form_for(@child_archive) do |f| %>
+
+		<table class="table">
+
+              <tr>
+                <th class="active">性格タイプ</th>
+                <td>
+                	<%= f.label :temperament, '気質' %>
+   					<%= f.select :temperament, {'エンジェルタイプ': 1, 'テキストタイプ': 2, 'アクティブタイプ': 3, 'デリケートタイプ': 4, 'ネガティブタイプ': 5}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+  			    </td>
+              </tr>
+
+              <tr>
+                <th class="active">お住まいの種類</th>
+                <td>
+                  <%= f.select :environment, {'マンション・アパート': true, '一軒家': false}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">好きなもの</th>
+                <td>
+                  <%= f.text_field :favorite_thing, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">嫌いなもの</th>
+                <td>
+                  <%= f.text_field :un_favorite_thing, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">最近よく話す言葉・口癖</th>
+                <td>
+                  <%= f.text_field :status, autofocus: true %>
+                </td>
+              </tr>
+              <tr>
+                <th class="active">メモ</th>
+                <td>
+                  <%= f.text_field :memo, autofocus: true %>
+                </td>
+              </tr>
+
+
+		</table>
+        	　<%= f.submit "登録する",class: "btn btn-success" %>
+<% end %>
+
