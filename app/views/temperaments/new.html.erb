@@ -1,0 +1,19 @@
+<h2>気質登録</h2>
+
+ <%= form_for(@temperament) do |f| %>
+  <table>
+    <tbody>
+      <tr>
+        <td>名前</td>
+        <td><%= f.text_field :name %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>説明</td>
+        <td><%= f.text_field :explanation %></td>
+        <td></td>
+      </tr>
+        <td><%= f.submit "新規登録", class: "btn-sm btn-primary" %></td>
+      <% end %>
+  </tbody>
+</table>

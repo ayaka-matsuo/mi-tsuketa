@@ -31,7 +31,25 @@
 		<tbody>
 				<tr>
 	  				<th>口コミポイント</th>
-	  				<th><%= @review.review_point %></th>
+	  				<th>
+	  					<div class="form-group row" id="star">
+						    <%= @review.rate %>
+						  </div>
+
+						  <!-- 評価javascript -->
+						  <script>
+						  $('#star').raty({
+						    size     : 36,
+						    starOff:  '<%= asset_path('star-off.png') %>',
+						    starOn : '<%= asset_path('star-on.png') %>',
+						    starHalf: '<%= asset_path('star-half.png') %>',
+						    scoreName: 'review[rate]',
+						    half: true,
+						    readOnly: true,
+				            score: <%= @review.rate %>
+						  });
+						  </script>
+	  				</th>
   				</tr>
 
 	  			<tr>
@@ -54,7 +72,7 @@
 
 
 <%= simple_form_for [@toy,@review] do |f| %>
-  <%= f.input :review_point, as: :hidden %>
+  <%= f.input :rate, as: :hidden %>
   <%= f.input :effect_id, as: :hidden %>
   <%= f.input :body, as: :hidden %>
 

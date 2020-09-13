@@ -1,0 +1,17 @@
+<h1>気質一覧</h1>
+
+<table class="table">
+	<tbody>
+		<% @temperaments.each do |temperament| %>
+			<tr>
+				<td>
+					<%= temperament.id %>
+				</td>
+
+				<td>
+					<%= temperament.name %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

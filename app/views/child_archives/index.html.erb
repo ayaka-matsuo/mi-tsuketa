@@ -1,4 +1,11 @@
 <h1>おもいで</h1>
+		<h3>検索タグ</h3>
+
+        <%= form_with(url: child_archives_path, method: :get, local: true) do |c| %>
+			<%= c.collection_select :search, Child.all, :name, :name %>
+			<%= c.submit 'Search' %>
+			<% end %>
+
 
 <table class="table">
 	<tbody>
@@ -20,3 +27,5 @@
 		<% end %>
 	</tbody>
 </table>
+
+<%= will_paginate @child_archives, previous_label: '&lt 前へ', next_label: '次へ &gt' %>

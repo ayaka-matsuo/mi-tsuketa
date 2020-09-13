@@ -6,7 +6,7 @@
 		<% @user.children.each do |child| %>
 			<tr>
 
-				<%#= attachment_image_tag(child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
+				<%= attachment_image_tag(child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
 
 				<td>
 					<%= child.name %>
@@ -23,17 +23,7 @@
 					<%= child.age_month %>ヶ月
 				</td>
 				<td>
-					<% if child.temperament == 1 %>
-                		<%= "エンジェルタイプ" %>
-                	<% elsif child.temperament == 2 %>
-                		<%= "テキストタイプ" %>
-                	<% elsif child.temperament == 3 %>
-                		<%= "アクティブタイプ" %>
-                	<% elsif child.temperament == 4 %>
-                		<%= "デリケートタイプ" %>
-                	<% else %>
-                		<%= "ネガティブタイプ" %>
-                	<% end %>
+					<%= child.temperaments.pluck(:name).join(", ") %>
 				</td>
 				<td>
 				 <%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary' %>

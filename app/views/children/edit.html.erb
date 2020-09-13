@@ -35,8 +35,10 @@
               <tr>
                 <th class="active">気質</th>
                 <td>
-                	<%= f.label :temperament, '気質' %>
-   					<%= f.select :temperament, {'エンジェルタイプ': 1, 'テキストタイプ': 2, 'アクティブタイプ': 3, 'デリケートタイプ': 4, 'ネガティブタイプ': 5}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                	<%= f.label :気質 %><br />
+                    <%= collection_check_boxes(:child, :temperament_ids, Temperament.all, :id, :name) do |b| %>
+                    <%= b.label { b.check_box + b.text } %>
+                    <% end %>
   			    </td>
               </tr>
 

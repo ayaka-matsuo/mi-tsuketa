@@ -1,9 +1,7 @@
 <h1>おもちゃ情報編集</h1>
 
-<h1>おもちゃ情報登録</h1>
 
  <%= form_for(@toy) do |f| %>
-  <%#= f.attachment_field :toy_image %>
   <table>
     <thead>
       <tr>
@@ -11,6 +9,11 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>
+          <%= f.attachment_field :toy_image, placeholder: "Image", class: "user-edit-form" %>
+        </td>
+      </tr>
       <tr>
         <td>商品名</td>
         <td><%= f.text_field :name %></td>
@@ -20,6 +23,21 @@
         <td>メーカー</td>
         <td><%= f.text_field :manufacturer %></td>
         <td></td>
+      </tr>
+      <tr>
+        <td>素材</td>
+        <td><%= f.text_field :material %></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>商品の寸法(奥行きx幅x高さ)</td>
+        <td><%= f.text_field :depth %><%= "x" %></td>
+        <td><%= f.text_field :width %><%= "x" %></td>
+        <td><%= f.text_field :height %></td>
+      </tr>
+      <tr>
+        <td>対象年齢</td>
+        <td><%= f.text_area :target_age %><%= "歳から" %></td>
       </tr>
       <tr>
         <td>商品説明</td>

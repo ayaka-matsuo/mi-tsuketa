@@ -68,5 +68,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'pry-byebug'
-gem 'will_paginate',           '3.1.6'
+gem 'will_paginate', '3.1.7' # will_paginateのバージョンをあげた
 gem 'bootstrap-will_paginate', '1.0.0'
+

@@ -38,8 +38,12 @@ class ReviewsController < ApplicationController
   def destroy
   end
 
+  def search
+  @reviews = Review.search(params[:search])
+  end
+
   private
   def review_params
-    params.require(:review).permit(:review_point, :body, :effect_id, :toy_id, :user_id)
+    params.require(:review).permit(:review_point, :body, :effect_id, :toy_id, :rate, :user_id)
   end
 end

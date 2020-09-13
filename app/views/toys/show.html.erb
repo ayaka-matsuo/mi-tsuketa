@@ -2,7 +2,7 @@
 
 <h2>おもちゃ詳細画面</h2>
 
-		<%#= attachment_image_tag @toy, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @toy, :toy_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
 
 		<table class="table">
 			<tbody>
@@ -11,6 +11,21 @@
 	  				<th>メーカー</th>
 	  				<th><%= @toy.manufacturer %></th>
   				</tr>
+  				<tr>
+		        <th>素材</th>
+		        <th><%= @toy.material %></th>
+		      	</tr>
+		        <tr>
+			        <th>商品の寸法(奥行きx幅x高さ)</th>
+			        <th><%= @toy.depth %><%= "x" %>
+			        <%= @toy.width %><%= "x" %>
+		        	<%= @toy.height %></th>
+		      	</tr>
+		      <tr>
+		        <th>対象年齢</th>
+		        <th><%= @toy.target_age %><%= "歳から" %></th>
+		      </tr>
+		      <tr>
 
 	  			<tr>
 	  				<th>商品名</th>
@@ -35,12 +50,28 @@
 
 	<h3>口コミ一覧</h3>
 		<% @toy.reviews.each do |review| %>
-			<p>レビューポイント</p>
-    			<p><%= review.review_point %></p>
-    		<p>内容</p>
-    			<p><%= review.body %></p>
-    		<p>効果</p>
-    			<p><%= review.effect.name %></p>
+
+		<div class="col-md-6 mb-3">
+        <div class=" posts-content">
+          <p><%= review.created_at %></p>
+          <h4 class="mb-3">評価：<%= review.rate %>点</h4>
+
+          <!--星評価-->
+         <div id="star-rate-<%= review.id %>"></div>
+          <script>
+          $('#star-rate-<%= review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= review.rate %>,
+          });
+          </script>
+        <!--/星評価-->
+    		<h4 class="mb-3">内容：<%= review.body %></h4>
+    		<h4 class="mb-3">効果：<%= review.effect.name %></h4>
     	<% end %>
 
 

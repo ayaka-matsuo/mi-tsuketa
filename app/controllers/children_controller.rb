@@ -3,6 +3,7 @@ class ChildrenController < ApplicationController
   def new
     @user = current_user
     @child = Child.new
+    @temperaments = Temperament.all
 
   end
 
@@ -19,12 +20,13 @@ class ChildrenController < ApplicationController
       child_archive.child_id = @child.id
       child_archive.age_year = @child.age_year
       child_archive.age_month = @child.age_month
-      child_archive.temperament = @child.temperament
       child_archive.environment = @child.environment
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
       child_archive.profile_image_id = @child.profile_image_id
+      child_archive.temperament_ids = @child.temperament_ids
+      child_archive.name = @child.name
       child_archive.user_id = current_user.id
       child_archive.save
 
@@ -57,12 +59,12 @@ class ChildrenController < ApplicationController
       child_archive.child_id = @child.id
       child_archive.age_year = @child.age_year
       child_archive.age_month = @child.age_month
-      child_archive.temperament = @child.temperament
       child_archive.environment = @child.environment
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
       child_archive.profile_image_id = @child.profile_image_id
+      child_archive.temperament_ids = @child.temperament_ids
       child_archive.user_id = current_user.id
       child_archive.save
 
@@ -75,8 +77,8 @@ class ChildrenController < ApplicationController
 
   private
   def child_params
-    params.require(:child).permit(:name, :sex, :age_year, :age_month, :temperament, :environment, :favorite_thing, :un_favorite_thing, :status, :profile_image,
-      child_archives_attributes: [:id,:age_year, :age_month, :temperament, :environmente, :favorite_thing, :un_favorite_thing, :status, :profile_image, :memo, :user_id])
+    params.require(:child).permit(:name, :sex, :age_year, :age_month, :environment, :favorite_thing, :un_favorite_thing, :status, :profile_image, temperament_ids:[],
+      child_archives_attributes: [:id,:age_year, :age_month, :environmente, :favorite_thing, :un_favorite_thing, :status, :profile_image, :memo, :name, :user_id, temperament_ids:[]])
     end
 
 end

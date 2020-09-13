@@ -1,59 +1,122 @@
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #fafad2">
+  <div class="container">
+
 <header>
+    <nav class="nav navbar-nav navbar-left">
+      <span></span>
+    </nav>
+
   <% if user_signed_in? %>
-  <ul class="nav navbar-nav navbar-left" >
-    <div class="logo">
-      <%= link_to root_path do %>
-      <%= image_tag('icon3.jpg') %>
-      <% end %>
-    </div>
-  </ul>
 
-  <ul class="nav navbar-nav navbar-right" >
+  <nav>
 
-    <p>ようこそ、<%= current_user.name %>さん！</p>
-    <li class="aikonn">
-      <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to '口コミする', toys_path, class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to 'おもいで', child_archives_path, class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
-    </li>
-  </ul>
+    <ul class="nav navbar-nav navbar-left" >
+      <div class="logo">
+        <%= link_to root_path do %>
+        <%= image_tag('icon3.jpg') %><!-- ロゴ追加する -->
+        <% end %>
+      </div>
+    </ul>
+
+
+      <ul class="nav navbar-nav navbar-right" >
+
+        <p>ようこそ、<%= current_user.name %>さん！</p>
+
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <span class="glyphicon glyphicon-user" aria-hidden="true">
+            マイページ
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to toys_path do %>
+            <span class="glyphicon glyphicon-pencil" aria-hidden="true">
+            口コミする
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to child_archives_path do %>
+            <span class="glyphicon glyphicon-book" aria-hidden="true">
+            おもいで
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out" aria-hidden="true">
+              ログアウト
+            </span>
+          <% end %>
+        </li>
+
+      </ul>
+
 
   <% else %>
 
-  <ul class="nav navbar-nav navbar-left" >
 
-    <div class="logo">
-      <%= link_to root_path do %>
-      <%= image_tag('icon3.jpg') %>
+      <ul class="nav navbar-nav navbar-left" >
+
+        <div class="logo">
+          <%= link_to root_path do %>
+          <%= image_tag('icon3.jpg') %><!-- ロゴ追加する -->
+          <% end %>
+        </div>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" >
+
+        <li>
+          <%= link_to homes_about_path do %>
+            <span class="glyphicon glyphicon-link" aria-hidden="true">
+            About
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to toys_path do %>
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+            口コミを見る
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-edit" aria-hidden="true">
+            新規登録
+            </span>
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in" aria-hidden="true">
+              ログイン
+            </span>
+          <% end %>
+        </li>
+      </ul>
+
+      </nav>
       <% end %>
-    </div>
-  </ul>
-  <ul class="nav navbar-nav navbar-right" >
-
-    <li class="aikonn">
-      <%= link_to 'About', homes_about_path, class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to '口コミを見る', reviews_path, class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary' %>
-    </li>
-    <li class="aikonn">
-      <%= link_to 'ログイン',  new_user_session_path, class: 'btn btn-primary' %>
-    </li>
-  </ul>
-
-  <% end %>
-
-
 </header>
 
 
+<body>
+<%= yield %>
+</body>
+
+</div>
+</header>
+
+<footer class="navbar navbar-fixed-bottom navbar-inverse" style="background-color: #fafad2">
+        <p>CopyRight Infratop.inc</p>
+</footer>

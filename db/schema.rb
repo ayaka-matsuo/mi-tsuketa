@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_073540) do
+ActiveRecord::Schema.define(version: 2020_09_10_124438) do
+
+  create_table "child_archive_temperaments", force: :cascade do |t|
+    t.integer "child_archive_id"
+    t.integer "temperament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_archive_id"], name: "index_child_archive_temperaments_on_child_archive_id"
+    t.index ["temperament_id"], name: "index_child_archive_temperaments_on_temperament_id"
+  end
 
   create_table "child_archives", force: :cascade do |t|
     t.integer "child_id"
     t.integer "age_year"
-    t.integer "temperament"
     t.boolean "environment"
     t.text "favorite_thing"
     t.text "un_favorite_thing"
@@ -26,13 +34,22 @@ ActiveRecord::Schema.define(version: 2020_09_08_073540) do
     t.datetime "updated_at", null: false
     t.integer "age_month"
     t.integer "user_id"
+    t.string "name"
+  end
+
+  create_table "child_temperaments", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "temperament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_child_temperaments_on_child_id"
+    t.index ["temperament_id"], name: "index_child_temperaments_on_temperament_id"
   end
 
   create_table "children", force: :cascade do |t|
     t.integer "user_id"
     t.integer "sex"
     t.integer "age_year"
-    t.integer "temperament"
     t.boolean "environment"
     t.string "name"
     t.text "favorite_thing"
@@ -64,6 +81,14 @@ ActiveRecord::Schema.define(version: 2020_09_08_073540) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "effect_id"
+    t.float "rate", default: 0.0, null: false
+  end
+
+  create_table "temperaments", force: :cascade do |t|
+    t.string "name"
+    t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "toys", force: :cascade do |t|
@@ -75,6 +100,11 @@ ActiveRecord::Schema.define(version: 2020_09_08_073540) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "material"
+    t.integer "depth"
+    t.integer "width"
+    t.integer "height"
+    t.integer "target_age"
   end
 
   create_table "users", force: :cascade do |t|

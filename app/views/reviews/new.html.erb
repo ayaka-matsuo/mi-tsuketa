@@ -31,12 +31,30 @@
 		</table>
 
 
+
+
 <%= form_for [@toy, @review], url: confirm_toy_reviews_path do |f| %>
 
   <div class="row">
-  	<div class="col-sm-12">
-      <%= f.text_area :review_point, class: "form-control" %>
-    </div>
+
+  <!-- 評価 -->
+  <div class="form-group row" id="star">
+    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>
+
     <div class="col-sm-12">
       <%= f.select :effect_id, Effect.all.map{ |effect| [effect.name, effect.id]} %>
     </div>
@@ -46,4 +64,5 @@
 
   </div>
   <%= f.submit "確認画面へ", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+
 <% end %>

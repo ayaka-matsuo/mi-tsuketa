@@ -32,17 +32,7 @@
   				<tr>
 	  				<th>性格タイプ</th>
 	  				<th>
-	  					<% if @child.temperament == 1 %>
-                			<%= "エンジェルタイプ" %>
-                		<% elsif @child.temperament == 2 %>
-                			<%= "テキストタイプ" %>
-                		<% elsif @child.temperament == 3 %>
-                			<%= "アクティブタイプ" %>
-                		<% elsif @child.temperament == 4 %>
-                			<%= "デリケートタイプ" %>
-                		<% else %>
-                			<%= "ネガティブタイプ" %>
-                		<% end %>
+                		<%= @child.temperaments.pluck(:name).join(", ") %>
 	  				</th>
   				</tr>
 

@@ -1,8 +1,6 @@
 class ChildArchivesController < ApplicationController
   def index
-    @user = current_user
-    @child_archives = @user.child_archives.all
-
+    @child_archives = ChildArchive.search(params[:search]).paginate(page: params[:page], per_page: 5)
   end
 
   def show
