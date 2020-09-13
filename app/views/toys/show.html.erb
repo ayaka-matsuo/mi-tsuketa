@@ -1,82 +1,101 @@
+<%= render 'layouts/header' %>
 
+<div class="container">
+	<div class="row col-md-offset-3 col-md-8 reviewnewtitle">
+	    <h4 style= "font-size: 25px"><%= @toy.manufacturer %>  <%= @toy.name %></h4>
+    </div>
 
-<h2>おもちゃ詳細画面</h2>
+    <div class="row">
 
-		<%= attachment_image_tag @toy, :toy_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+		    <div class="col-md-offset-1 col-md-4 reviewnewtitle">
+				<%= attachment_image_tag @toy, :toy_image, format: 'jpeg', size: "300x300", fallback: "no_image.jpg" %>
+			</div>
 
-		<table class="table">
-			<tbody>
+			<div class="col-md-5">
 
-				<tr>
-	  				<th>メーカー</th>
-	  				<th><%= @toy.manufacturer %></th>
-  				</tr>
-  				<tr>
-		        <th>素材</th>
-		        <th><%= @toy.material %></th>
-		      	</tr>
-		        <tr>
-			        <th>商品の寸法(奥行きx幅x高さ)</th>
-			        <th><%= @toy.depth %><%= "x" %>
-			        <%= @toy.width %><%= "x" %>
-		        	<%= @toy.height %></th>
-		      	</tr>
-		      <tr>
-		        <th>対象年齢</th>
-		        <th><%= @toy.target_age %><%= "歳から" %></th>
-		      </tr>
-		      <tr>
+				<table class="table toytable">
+					<tbody>
+						<tr class="active">
+			  				<th>詳細情報</th>
+			  				<th><%= @toy.name %></th>
+		  				</tr>
+		  				<tr>
+			  				<th>メーカー</th>
+					        <th><%= @toy.manufacturer %></th>
+				      	</tr>
+				      	<tr>
+			  				<th>商品名</th>
+					        <th><%= @toy.name %></th>
+				      	</tr>
+				      	<tr>
+			  				<th>アイテムジャンル</th>
+					        <th><%= @toy.genre.name %></th>
+				      	</tr>
+				      	<tr>
+			  				<th>価格</th>
+					        <th><%= @toy.price %></th>
+				      	</tr>
+				      	<tr>
+			  				<th>素材</th>
+					        <th><%#= @toy.materia %></th>
+				      	</tr>
+				        <tr>
+					        <th>商品の寸法(奥行きx幅x高さ)</th>
+					        <th><%= @toy.depth %><%= "x" %>
+					        <%= @toy.width %><%= "x" %>
+				        	<%= @toy.height %></th>
+				      	</tr>
+				      　<tr>
+					        <th>対象年齢</th>
+					        <th><%= @toy.target_age %><%= "歳から" %></th>
+				      　</tr>
+		  				<tr>
+			  				<th>商品説明</th>
+			  				<th><%= @toy.toy_introduction %></th>
+		  				</tr>
+					</tbody>
+				</table>
+			</div>
+	</div>
 
-	  			<tr>
-	  				<th>商品名</th>
-	  				<th>
-	  				<%= @toy.name %>
-	  				</th>
-	  			</tr>
-
-	  			<tr>
-	  				<th>価格</th>
-	  				<th><%= @toy.price %>円
-	  				</th>
-  				</tr>
-
-  				<tr>
-	  				<th>商品説明</th>
-	  				<th><%= @toy.toy_introduction %></th>
-  				</tr>
-
-			</tbody>
-		</table>
-
-	<h3>口コミ一覧</h3>
+	<div class="col-md-12">
 		<% @toy.reviews.each do |review| %>
+		<div>
+			<div class="col-md-3 review-toy">
+				<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+				<!-- 使用したお子様の名前<%#= review.child.name %><br>
+				使用したお子様の特徴<%#= review.child.temperaments.pluck(:name).join(",") %><br> -->
+			</div>
+			<div class="col-md-9 review-toy">
+				<div class="mypagecontent">
+				<%= review.created_at.strftime('%Y/%m/%d') %><br>
+				<%= review.rate %>点</h4>
 
-		<div class="col-md-6 mb-3">
-        <div class=" posts-content">
-          <p><%= review.created_at %></p>
-          <h4 class="mb-3">評価：<%= review.rate %>点</h4>
-
-          <!--星評価-->
-         <div id="star-rate-<%= review.id %>"></div>
-          <script>
-          $('#star-rate-<%= review.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= review.rate %>,
-          });
-          </script>
-        <!--/星評価-->
-    		<h4 class="mb-3">内容：<%= review.body %></h4>
-    		<h4 class="mb-3">効果：<%= review.effect.name %></h4>
-    	<% end %>
+		         <!--星評価-->
+		         <div id="star-rate-<%= review.id %>"></div>
+		          <script>
+		          $('#star-rate-<%= review.id %>').raty({
+		            size: 36,
+		            starOff:  '<%= asset_path('star-off.png') %>',
+		            starOn : '<%= asset_path('star-on.png') %>',
+		            starHalf: '<%= asset_path('star-half.png') %>',
+		            half: true,
+		            readOnly: true,
+		            score: <%= review.rate %>,
+		          });
+		          </script>
+				<!--/星評価-->
+				<%= review.body %>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
 
 
-				 <%= link_to '編集する', edit_toy_path(@toy), class: 'btn btn-primary' %>
-				 <%= link_to '商品一覧に戻る', toys_path, class: 'btn btn-primary' %>
+
+
+
 
 
 

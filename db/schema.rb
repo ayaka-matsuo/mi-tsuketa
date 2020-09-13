@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_10_124438) do
+ActiveRecord::Schema.define(version: 2020_09_13_103401) do
 
   create_table "child_archive_temperaments", force: :cascade do |t|
     t.integer "child_archive_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2020_09_10_124438) do
     t.datetime "updated_at", null: false
     t.integer "effect_id"
     t.float "rate", default: 0.0, null: false
+    t.integer "child_id"
   end
 
   create_table "temperaments", force: :cascade do |t|

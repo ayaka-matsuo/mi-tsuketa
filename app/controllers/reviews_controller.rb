@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   def new
     @toy = Toy.find(params[:toy_id])
     @review = current_user.reviews.new
+    @children = current_user.children
   end
 
   def confirm
@@ -44,6 +45,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:review_point, :body, :effect_id, :toy_id, :rate, :user_id)
+    params.require(:review).permit(:review_point, :body, :effect_id, :toy_id, :rate, :user_id, :child_id)
   end
 end

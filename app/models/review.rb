@@ -2,6 +2,7 @@ class Review < ApplicationRecord
 	belongs_to :user
   	belongs_to :toy
   	belongs_to :effect
+  	belongs_to :child
 
   	validates :rate, numericality: {
     less_than_or_equal_to: 5,
