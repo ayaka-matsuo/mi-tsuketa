@@ -1,62 +1,84 @@
-<h1>おもいで詳細</h1>
+<%= render 'layouts/header' %>
+
+<div class="container">
+
+	<h3>おもいで詳細</h3>
+
+		<div class="row child_archivecontents">
+			<div class="col-md-offset-3 col-md-9">
+				<div class="row">
+						<div class="col-md-5">
+							<%= attachment_image_tag @child_archive, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
+						</div>
+						<div class="col-md-7 child_archivep">
+							<br>
+							<%= @child_archive.created_at.strftime('%Y/%m/%d') %><br>
+							<h3><%= @child_archive.child.name %></h3><br>
+							<%= @child_archive.age_year %>歳
+							<%= @child_archive.age_month %>ヶ月
+						</div>
+				</div>
+
+				<div class="row col-md-7">
+
+						<table class="table">
+							<tbody>
+
+					  			<tr>
+					  				<th class="active">性格タイプ</th>
+					  				<th>
+					  					<%= @child_archive.temperaments.pluck(:name).join(", ") %>
+					  				</th>
+				  				</tr>
+
+				  				<tr>
+					  				<th class="active">お住まいの種類</th>
+					  				<th>
+					  					<% if @child_archive.environment == true %>
+				                			<%= "マンション・アパート" %>
+				                		<% else %>
+				                			<%= "一軒家" %>
+				                		<% end %>
+					  				</th>
+					  			</tr>
+
+					  			<tr>
+					  				<th class="active">好きなもの</th>
+					  				<th><%= @child_archive.favorite_thing %>
+					  				</th>
+				  				</tr>
+
+				  				<tr>
+					  				<th class="active">嫌いなもの</th>
+					  				<th><%= @child_archive.un_favorite_thing %>
+					  				</th>
+				  				</tr>
+
+				  				<tr>
+					  				<th class="active">最近覚えた言葉・口癖</th>
+					  				<th><%= @child_archive.status %>
+					  				</th>
+				  				</tr>
+
+				  				<tr>
+					  				<th class="active">メモ</th>
+					  				<th><% if @child_archive.memo == nil %>
+					  						<%= "登録がありません"%>
+					  					<% else %>
+					  						<%= @child_archive.memo %>
+					  					<% end %>
+					  				</th>
+				  				</tr>
+							</tbody>
+						</table>
+				</div>
+
+				<div class="col-md-offset-2 col-md-9">
+						 <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary' %>
+						 <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary' %>
+				</div>
+			</div>
+		</div>
 
 
-
-			<%= attachment_image_tag @child_archive, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-
-				<%= @child_archive.created_at %>
-	  			<%= @child_archive.child.name %>
-	  			<%= @child_archive.age_year %>歳
-				<%= @child_archive.age_month %>ヶ月
-
-
-<table class="table">
-
-	  			<tr>
-	  				<th>性格タイプ</th>
-	  				<th>
-	  					<%= @child_archive.temperaments.pluck(:name).join(", ") %>
-	  				</th>
-  				</tr>
-
-  				<tr>
-	  				<th>お住まいの種類</th>
-	  				<th>
-	  					<% if @child_archive.environment == true %>
-                			<%= "マンション・アパート" %>
-                		<% else %>
-                			<%= "一軒家" %>
-                		<% end %>
-	  				</th>
-	  			</tr>
-
-	  			<tr>
-	  				<th>好きなもの</th>
-	  				<th><%= @child_archive.favorite_thing %>
-	  				</th>
-  				</tr>
-
-  				<tr>
-	  				<th>嫌いなもの</th>
-	  				<th><%= @child_archive.un_favorite_thing %>
-	  				</th>
-  				</tr>
-
-  				<tr>
-	  				<th>最近覚えた言葉・口癖</th>
-	  				<th><%= @child_archive.status %>
-	  				</th>
-  				</tr>
-
-  				<tr>
-	  				<th>メモ</th>
-	  				<th><%= @child_archive.memo %>
-	  				</th>
-  				</tr>
-
-
-			</tbody>
-		</table>
-
-				 <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary' %>
-				 <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary' %>
+</div>

@@ -5,7 +5,7 @@ class Toy < ApplicationRecord
 
 	def self.search(search)
 	    if search
-	       where(['name LIKE ?', "%#{search}%"]) #検索とuseanameの部分一致を表示。
+	       where(['name LIKE ? OR manufacturer LIKE ? OR material LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%"])
 	    else
 	       all #全て表示させる
 	    end

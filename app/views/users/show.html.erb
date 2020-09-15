@@ -2,18 +2,17 @@
 
 
 <div class="container">
-	<h1>マイページ</h1><br>
+
+	<h3>マイページ</h3><br>
 
 		<div class="row">
 			<div class="col-md-3">
-				<div class="blog_right_sidebar">
-					<aside class="prof-area">
+					<div class="prof-area">
 
 						<%= render 'layouts/profile', user: @user %>
 
 					<%= link_to '編集する', edit_user_path(@user), class: 'btn btn-primary col-md-offset-2 col-md-6', data: {"turbolinks" => false} %><br>
-					</aside>
-				</div>
+					</div>
 
 			</div>
 
