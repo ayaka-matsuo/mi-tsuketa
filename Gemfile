@@ -70,4 +70,8 @@ gem 'simple_form'
 gem 'pry-byebug'
 gem 'will_paginate', '3.1.7' # will_paginateのバージョンをあげた
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 
