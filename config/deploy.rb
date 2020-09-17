@@ -38,7 +38,7 @@ set :repo_url, "git@github.com:ayaka-matsuo/mi-tsuketa.git"
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-set :deploy_to, "/home/ec2-user/mi-tsuketa
+set :deploy_to, "/home/ec2-user/mi-tsuketa"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
