@@ -87,17 +87,18 @@
 				<%= review.body %><br>
 				使用したお子様の性格:<%#= review.child.temperaments.pluck(:name).join(",") %><br>
 
-
-					<% if review.reviewfavorited_by?(current_user) %>
-					  <%= link_to toy_review_reviewfavorites_path(review.toy, review), method: :delete do %>
-					   参考になった！<i class="fas fa-thumbs-up"></i>
-					    <%= review.reviewfavorites.count %>
-					  <% end %>
-					<% else %>
-					  <%= link_to toy_review_reviewfavorites_path(review.toy, review), method: :post do %>
-					   参考になった！<i class="far fa-thumbs-up"></i>
-					    <%= review.reviewfavorites.count %>
-					  <% end %>
+					<% unless review.user == current_user %>
+						<% if review.reviewfavorited_by?(current_user) %>
+						  <%= link_to toy_review_reviewfavorites_path(review.toy, review), method: :delete do %>
+						   参考になった！<i class="fas fa-thumbs-up"></i>
+						    <%= review.reviewfavorites.count %>
+						  <% end %>
+						<% else %>
+						  <%= link_to toy_review_reviewfavorites_path(review.toy, review), method: :post do %>
+						   参考になった！<i class="far fa-thumbs-up"></i>
+						    <%= review.reviewfavorites.count %>
+						  <% end %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
