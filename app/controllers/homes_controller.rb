@@ -1,11 +1,7 @@
 class HomesController < ApplicationController
 
 def top
-	# @aves = []
-	# Toy.all.each do |toy|
-	# @aves.push toy.reviews.average(:rate)
-	# end
-	# @averages = Review.select("toy_id,@aves(rate) as @aves").group(:toy_id)
+    @toys = Toy.joins(:reviews).group(:toy_id).order('avg(reviews.rate) desc')
 end
 
 def about

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_13_103401) do
+ActiveRecord::Schema.define(version: 2020_09_19_150550) do
 
   create_table "child_archive_temperaments", force: :cascade do |t|
     t.integer "child_archive_id"
@@ -67,8 +67,22 @@ ActiveRecord::Schema.define(version: 2020_09_13_103401) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviewfavorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,6 +102,13 @@ ActiveRecord::Schema.define(version: 2020_09_13_103401) do
   create_table "temperaments", force: :cascade do |t|
     t.string "name"
     t.text "explanation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "toyfavorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "toy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

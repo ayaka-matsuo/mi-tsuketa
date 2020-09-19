@@ -1,0 +1,2 @@
+module ToyfavoritesHelper
+end

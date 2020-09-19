@@ -40,6 +40,7 @@ class ToysController < ApplicationController
   def destroy
   end
 
+
   private
   def toy_params
     params.require(:toy).permit(:name, :price, :manufacturer, :genre_id, :toy_image, :toy_introduction, :depth, :width, :height, :target_age, :material)

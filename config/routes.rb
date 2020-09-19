@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
 resources :users, only: [:show, :edit, :update]
 resources :toys do
+	resource :toyfavorites, only: [:create, :destroy]
 	resources :reviews do
+		resource :reviewfavorites, only: [:create, :destroy]
 		collection do
       		post :confirm
     	end
