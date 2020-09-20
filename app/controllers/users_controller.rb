@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   def show
   	@user = current_user
     @review = Review.find(current_user.id)
-    @reviewfavorite = Reviewfavorite.find(current_user.id)
   end
 
   def edit
