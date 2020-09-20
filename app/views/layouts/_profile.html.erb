@@ -6,8 +6,10 @@
 	</div>
 	<div class="row col-md-offset-4 col-md-7 prof-name">
 		<%= user.name %><br>
-		フォロー数:<br>
-		フォロワー数:<br>
+		いいねしたおもちゃ:<%= user.toyfavorites.count %><br>
+		いいねした口コミ:<%= user.reviewfavorites.count %>
+		いいねされた口コミ:
+		<%= @review.reviewfavorites.count %><br>
 	</div>
 	<tbody>
 		<tr>

@@ -99,6 +99,8 @@
 						    <%= review.reviewfavorites.count %>
 						  <% end %>
 						<% end %>
+					<% else %>
+						参考になった！<i class="fas fa-thumbs-up"></i><%= review.reviewfavorites.count %>
 					<% end %>
 				</div>
 			</div>
