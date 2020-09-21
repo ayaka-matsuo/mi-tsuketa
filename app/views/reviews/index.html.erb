@@ -1,2 +1,62 @@
-<h1>Reviews#index</h1>
-<p>Find me in app/views/reviews/index.html.erb</p>
+<%= render 'layouts/header' %>
+
+<div class="breadcrumbs">
+	<%= link_to root_path do %>
+		<%= "Home" %>
+	<% end %>
+	<%= ">" %>
+	<span class="current">口コミ一覧</span>
+</div>
+
+
+
+<div class="container">
+	<h3 class="toy_select">最近の口コミ</h3><br>
+
+		<div class="col-md-12 searchfield">
+
+		<% @reviews.each do |review| %>
+
+						<div>
+							<div class="col-md-3 review-toy">
+								<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
+								<%= review.user.name %>さん
+							</div>
+							<div class="col-md-9 review-toy">
+								<div class="reviewscontent">
+									<div class="reviewscontenthead">
+										<p class="reviewday"><%= review.created_at.strftime('%Y/%m/%d') %></p>
+										使用したお子様の情報:
+										<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
+										<%= review.child.temperaments.pluck(:name).join(",") %>
+									</div><br>
+									<div class="col-md-4 reviewstoy">
+										<%= link_to toy_path(review.toy.id) do %>
+											<%= attachment_image_tag review.toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
+										<% end %>
+										<%= review.toy.name %><br>
+									</div>
+									<div class="col-md-8">
+						         <!--星評価-->
+								         <div id="star-rate-<%= review.id %>"></div>
+								          <script>
+								          $('#star-rate-<%= review.id %>').raty({
+								            size: 36,
+								            starOff:  '<%= asset_path('star-off.png') %>',
+								            starOn : '<%= asset_path('star-on.png') %>',
+								            starHalf: '<%= asset_path('star-half.png') %>',
+								            half: true,
+								            readOnly: true,
+								            score: <%= review.rate %>,
+								          });
+								          </script>
+								          <span><%= review.rate %>点</span><br><br><br>
+				        				<!--/星評価-->
+				        				<%= review.body %>
+									</div>
+								</div>
+							</div>
+						</div>
+		<% end %>
+		</div>
+</div>

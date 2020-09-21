@@ -8,49 +8,51 @@
     <div class="row">
 
 		    <div class="col-md-offset-1 col-md-4 reviewnewtitle">
-				<%= attachment_image_tag @toy, :toy_image, format: 'jpeg', size: "300x300", fallback: "no_image.jpg" %>
+				<%= attachment_image_tag @toy, :toy1_image, format: 'jpeg', size: "300x300", fallback: "no_image.jpg" %>
 			</div>
 
-			<div class="col-md-5">
+			<div class="col-md-7">
 
 				<table class="table toytable">
 					<tbody>
-						<tr class="active">
-			  				<th>詳細情報</th>
+						<tr>
+			  				<th class="active">詳細情報</th>
 			  				<th><%= @toy.name %></th>
 		  				</tr>
 		  				<tr>
-			  				<th>メーカー</th>
+			  				<th class="active">メーカー</th>
 					        <th><%= @toy.manufacturer %></th>
 				      	</tr>
 				      	<tr>
-			  				<th>商品名</th>
+			  				<th class="active">商品名</th>
 					        <th><%= @toy.name %></th>
 				      	</tr>
 				      	<tr>
-			  				<th>アイテムジャンル</th>
+			  				<th class="active">アイテムジャンル</th>
 					        <th><%= @toy.genre.name %></th>
 				      	</tr>
 				      	<tr>
-			  				<th>価格</th>
+			  				<th class="active">価格</th>
 					        <th><%= @toy.price %></th>
 				      	</tr>
 				      	<tr>
-			  				<th>素材</th>
+			  				<th class="active">素材</th>
 					        <th><%= @toy.material %></th>
 				      	</tr>
 				        <tr>
-					        <th>商品の寸法(奥行きx幅x高さ)</th>
+					        <th class="active">商品の寸法(奥行きx幅x高さ)</th>
 					        <th><%= @toy.depth %><%= "x" %>
 					        <%= @toy.width %><%= "x" %>
 				        	<%= @toy.height %></th>
 				      	</tr>
 				      　<tr>
-					        <th>対象年齢</th>
-					        <th><%= @toy.target_age %><%= "歳から" %></th>
+					        <th class="active">対象年齢</th>
+					        <th><%= @toy.target_yearage %><%= "歳" %>
+					        	<%= @toy.target_monthage %><%= "歳ヶ月〜" %>
+					        </th>
 				      　</tr>
 		  				<tr>
-			  				<th>商品説明</th>
+			  				<th class="active">商品説明</th>
 			  				<th><%= @toy.toy_introduction %></th>
 		  				</tr>
 					</tbody>
@@ -85,7 +87,8 @@
 				<!--/星評価-->
 				効果：<%= review.effect.name %><br>
 				<%= review.body %><br>
-				使用したお子様の性格:<%#= review.child.temperaments.pluck(:name).join(",") %><br>
+				使用したお子様の性格:<%= review.child.temperaments.pluck(:name).join(",") %><br>
+				使用したお子様の年齢:<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月<br>
 
 					<% unless review.user == current_user %>
 						<% if review.reviewfavorited_by?(current_user) %>

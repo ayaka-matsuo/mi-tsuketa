@@ -18,37 +18,37 @@
 
 			<div class="col-md-6">
 				<h4 class="mypagetitle"><%= @user.name %>さんの最近の口コミ</h4>
-				<% @user.reviews.each do |review| %>
+						<% @user.reviews.each do |review| %>
 
-				<div>
-					<div class="col-md-3 review-toy">
-						<%= attachment_image_tag review.toy, :toy_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
-					</div>
-					<div class="col-md-9 review-toy">
-						<div class="mypagecontent">
-						<%= review.created_at.strftime('%Y/%m/%d') %><br>
-						<%= review.toy.name %><br>
-						<%= review.rate %>点</h4>
-
-				         <!--星評価-->
-				         <div id="star-rate-<%= review.id %>"></div>
-				          <script>
-				          $('#star-rate-<%= review.id %>').raty({
-				            size: 36,
-				            starOff:  '<%= asset_path('star-off.png') %>',
-				            starOn : '<%= asset_path('star-on.png') %>',
-				            starHalf: '<%= asset_path('star-half.png') %>',
-				            half: true,
-				            readOnly: true,
-				            score: <%= review.rate %>,
-				          });
-				          </script>
-        				<!--/星評価-->
-        				<%#= review.child.name %>
+						<div>
+							<div class="col-md-3 review-toy">
+								<%= attachment_image_tag review.toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+							</div>
+							<div class="col-md-9 review-toy">
+								<div class="mypagecontent">
+								<%= review.created_at.strftime('%Y/%m/%d') %><br>
+								<%= review.toy.name %><br>
+						         <!--星評価-->
+						         <div id="star-rate-<%= review.id %>"></div>
+						          <script>
+						          $('#star-rate-<%= review.id %>').raty({
+						            size: 36,
+						            starOff:  '<%= asset_path('star-off.png') %>',
+						            starOn : '<%= asset_path('star-on.png') %>',
+						            starHalf: '<%= asset_path('star-half.png') %>',
+						            half: true,
+						            readOnly: true,
+						            score: <%= review.rate %>,
+						          });
+						          </script>
+		        				<!--/星評価-->
+		        				使用したお子様:<%= review.child.name %><br>
+								<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月<br>
+								<%= review.child.temperaments.pluck(:name).join(",") %>
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
-				<% end %>
+						<% end %>
 			</div>
 
 			<div class="col-md-3">
@@ -57,12 +57,15 @@
 					<% @user.children.last(2).each do |child| %>
 
 						<div class="mypagechild">
-							<%= attachment_image_tag child, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+							<%= link_to edit_child_path(child.id) do %>
+								<%= attachment_image_tag child, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+							<% end %>
 							<%= child.name %><br>
 							<%= child.temperaments.pluck(:name).join("/") %>
 						</div>
 					<% end %>
 					<%= link_to 'もっと見る', children_path(@user), class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
+					<%= link_to 'お子様を登録する', new_child_path, class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
 				</div>
 
 				<br>
@@ -73,12 +76,15 @@
 					<% @user.child_archives.last(2).each do |child_archive| %>
 
 					<div class="mypagechild">
-						<%= attachment_image_tag child_archive, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+						<%= link_to edit_child_archive_path(child_archive.id) do %>
+							<%= attachment_image_tag child_archive, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+						<% end %>
 						<%= child_archive.created_at.strftime('%Y/%m/%d') %><br>
 						<%= child_archive.child.name %><br>
 					</div>
 					<% end %>
 					<%= link_to 'もっと見る', child_archives_path(@user), class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
+					<%= link_to 'おもいでを登録する', new_child_archive_path, class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
 				</div>
 			</div>
 		</div>

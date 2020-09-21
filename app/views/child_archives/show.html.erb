@@ -74,8 +74,8 @@
 				</div>
 
 				<div class="col-md-offset-2 col-md-9">
-						 <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary' %>
-						 <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary' %>
+						 <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
+						 <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary', data: {"turbolinks" => false} %>
 				</div>
 			</div>
 		</div>

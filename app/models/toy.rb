@@ -1,5 +1,8 @@
 class Toy < ApplicationRecord
-	attachment :toy_image
+	attachment :toy1_image
+	attachment :toy2_image
+	attachment :toy3_image
+	attachment :toy4_image
 	belongs_to :genre
 	has_many :reviews, dependent: :destroy
 	has_many :toyfavorites, dependent: :destroy

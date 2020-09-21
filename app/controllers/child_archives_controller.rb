@@ -10,9 +10,18 @@ class ChildArchivesController < ApplicationController
   end
 
   def new
+    @child_archive = ChildArchive.new
   end
 
   def create
+    @child_archive = ChildArchive.new(child_archive_params)
+    @child_archive.user_id = current_user.id
+    @user = current_user
+    if
+      @child_archive.save
+      flash[:notice] = "おもいでを登録しました"
+      redirect_to child_archives_path(@user.id)
+    end
   end
 
   def edit

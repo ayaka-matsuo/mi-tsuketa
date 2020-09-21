@@ -168,6 +168,7 @@ footer {
 }
 .toy-index {
   width: 300px;
+  height: 550px;
 }
 .cover {
   background-image: image-url("/images/IMG_110.jpg");
@@ -176,4 +177,40 @@ footer {
 }
 .text-center {
     text-align: center;
+}
+.product-brand {
+  font-size: 10px;
+}
+.product-title {
+  font-size: 18px;
+}
+.product-review {
+  font-size: 15px;
+}
+.toy_select {
+  text-align: center;
+}
+::placeholder {
+  font-size: 15px;
+}
+.reviewscontent {
+  position: relative;
+    display: inline-block;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+    min-width: 120px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 15px;
+    border: 2px solid #808080;
+}
+.reviewstoy {
+  font-size: 15px;
+  text-align: center;
+}
+.reviewscontenthead {
+  font-size: 15px;
+  background: #D3E3E5;
+  border-radius: 15px;
+  text-align: center;
 }

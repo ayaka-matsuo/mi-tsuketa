@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_19_150550) do
+ActiveRecord::Schema.define(version: 2020_09_20_092007) do
 
   create_table "child_archive_temperaments", force: :cascade do |t|
     t.integer "child_archive_id"
@@ -67,13 +67,6 @@ ActiveRecord::Schema.define(version: 2020_09_19_150550) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "review_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -117,7 +110,6 @@ ActiveRecord::Schema.define(version: 2020_09_19_150550) do
     t.integer "genre_id"
     t.string "name"
     t.text "manufacturer"
-    t.string "toy_image_id"
     t.text "toy_introduction"
     t.integer "price"
     t.datetime "created_at", null: false
@@ -126,7 +118,12 @@ ActiveRecord::Schema.define(version: 2020_09_19_150550) do
     t.integer "depth"
     t.integer "width"
     t.integer "height"
-    t.integer "target_age"
+    t.integer "target_yearage"
+    t.integer "target_monthage"
+    t.string "toy1_image_id"
+    t.string "toy2_image_id"
+    t.string "toy3_image_id"
+    t.string "toy4_image_id"
   end
 
   create_table "users", force: :cascade do |t|
