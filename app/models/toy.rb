@@ -6,6 +6,7 @@ class Toy < ApplicationRecord
 	belongs_to :genre
 	has_many :reviews, dependent: :destroy
 	has_many :toyfavorites, dependent: :destroy
+	has_many :liked_toys, through: :toyfavorites, source: :user
 
 	def toyfavorited_by?(user)
     toyfavorites.where(user_id: user.id).exists?

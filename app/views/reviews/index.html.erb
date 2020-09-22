@@ -1,5 +1,7 @@
 <%= render 'layouts/header' %>
 
+<div class="container">
+
 <div class="breadcrumbs">
 	<%= link_to root_path do %>
 		<%= "Home" %>
@@ -9,26 +11,29 @@
 </div>
 
 
-
-<div class="container">
 	<h3 class="toy_select">最近の口コミ</h3><br>
 
 		<div class="col-md-12 searchfield">
 
 		<% @reviews.each do |review| %>
 
-						<div>
-							<div class="col-md-3 review-toy">
+						<div class="reviewarea">
+							<div class="col-md-2 review-user">
 								<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
-								<%= review.user.name %>さん
+								<p><%= review.user.name %>さん</p>
 							</div>
-							<div class="col-md-9 review-toy">
+							<div class="col-md-10 review-toy">
 								<div class="reviewscontent">
 									<div class="reviewscontenthead">
-										<p class="reviewday"><%= review.created_at.strftime('%Y/%m/%d') %></p>
-										使用したお子様の情報:
+										<p class="reviewday" style="font-size: 10px"><%= review.created_at.strftime('%Y/%m/%d') %></p>
+										<span style="font-size: 10px">使用したお子様の情報:　</span>
+										<% if review.child.sex == 1 %>
+											<%= "男の子" %>|
+										<% else %>
+											<%= "女の子" %>|
+										<% end %>
 										<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
-										<%= review.child.temperaments.pluck(:name).join(",") %>
+										<%= review.child.temperaments.pluck(:name).join(" ・") %>
 									</div><br>
 									<div class="col-md-4 reviewstoy">
 										<%= link_to toy_path(review.toy.id) do %>
@@ -38,7 +43,7 @@
 									</div>
 									<div class="col-md-8">
 						         <!--星評価-->
-								         <div id="star-rate-<%= review.id %>"></div>
+								         <div id="star-rate-<%= review.id %>"><%= review.rate %><%="　"%></div>
 								          <script>
 								          $('#star-rate-<%= review.id %>').raty({
 								            size: 36,
@@ -50,9 +55,8 @@
 								            score: <%= review.rate %>,
 								          });
 								          </script>
-								          <span><%= review.rate %>点</span><br><br><br>
 				        				<!--/星評価-->
-				        				<%= review.body %>
+				        				<br><br><%= review.body %>
 									</div>
 								</div>
 							</div>

@@ -1,9 +1,17 @@
 <%= render 'layouts/header' %>
 
+<div class="breadcrumbs">
+	<%= link_to root_path do %>
+		<%= "Home" %>
+	<% end %>
+	<%= ">" %>
+	<span class="current">おもいで</span>
+</div>
+
 <div class="container">
 
 
-	<h3>おもいで</h3>
+	<h3 class="toy_select">おもいで</h3><br>
 
 		<div class="row col-md-12 searchfield">
 	        <%= form_with(url: child_archives_path, method: :get, local: true) do |c| %>

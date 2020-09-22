@@ -4,10 +4,11 @@ class Review < ApplicationRecord
   	belongs_to :effect
   	belongs_to :child
   	has_many :reviewfavorites, dependent: :destroy
+    has_many :liked_reviews, through: :reviewfavorites, source: :user
 
 	def reviewfavorited_by?(user)
     reviewfavorites.where(user_id: user.id).exists?
-  	end
+  end
 
 
   	validates :rate, numericality: {

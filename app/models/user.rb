@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :child_archives, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :toyfavorites, dependent: :destroy
+  has_many :liked_toys, through: :toyfavorites, source: :toy
   has_many :reviewfavorites, dependent: :destroy
+  has_many :liked_reviews, through: :reviewfavorites, source: :review
+
 
 end
