@@ -17,6 +17,7 @@ resources :users, only: [:show, :edit, :update]
 resources :toys do
 	resource :toyfavorites, only: [:create, :destroy]
 	resources :reviews do
+    get :myreview
 		resource :reviewfavorites, only: [:create, :destroy]
 		collection do
       		post :confirm
@@ -31,5 +32,6 @@ resources :temperaments, only: [:new, :create, :edit, :update, :index]
 
 get 'homes/about'
 root 'homes#top'
+
 
 end

@@ -5,6 +5,9 @@ class Review < ApplicationRecord
   	belongs_to :child
   	has_many :reviewfavorites, dependent: :destroy
     has_many :liked_reviews, through: :reviewfavorites, source: :user
+    has_many :review_temperaments, dependent: :destroy
+    has_many :temperaments, through: :review_temperaments
+    accepts_nested_attributes_for :review_temperaments, allow_destroy: true
 
 	def reviewfavorited_by?(user)
     reviewfavorites.where(user_id: user.id).exists?

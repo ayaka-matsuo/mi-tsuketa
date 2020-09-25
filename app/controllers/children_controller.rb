@@ -38,6 +38,7 @@ class ChildrenController < ApplicationController
 
   def index
     @user = current_user
+    @childlen = Child.search(params[:search]).paginate(page: params[:page], per_page: 5)
 
   end
 
@@ -65,6 +66,7 @@ class ChildrenController < ApplicationController
       child_archive.status = @child.status
       child_archive.profile_image_id = @child.profile_image_id
       child_archive.temperament_ids = @child.temperament_ids
+      child_archive.name = @child.name
       child_archive.user_id = current_user.id
       child_archive.save
 

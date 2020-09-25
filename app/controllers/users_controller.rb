@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
   	@user = current_user
+    @reviews = Reviewfavorite.where(review_id: current_user.reviews.ids)
+    @review = @user.reviews.all.order('created_at DESC').limit(1)
   end
 
   def edit

@@ -2,7 +2,7 @@
 
 <div class="container">
 
-	<h3>おもいで詳細</h3>
+	<h3 class="toy_select">おもいで詳細</h3><br>
 
 		<div class="row child_archivecontents">
 			<div class="col-md-offset-3 col-md-9">
@@ -11,7 +11,7 @@
 							<%= attachment_image_tag @child_archive, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
 						</div>
 						<div class="col-md-7 child_archivep">
-							<br>
+							<br><br>
 							<%= @child_archive.created_at.strftime('%Y/%m/%d') %><br>
 							<h3><%= @child_archive.child.name %></h3><br>
 							<%= @child_archive.age_year %>歳
@@ -21,7 +21,7 @@
 
 				<div class="row col-md-7">
 
-						<table class="table">
+						<br><table class="table">
 							<tbody>
 
 					  			<tr>

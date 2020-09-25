@@ -1,44 +1,48 @@
+
+
+
+
 <%= render 'layouts/header' %>
 
-<h1>登録済みのお子様一覧</h1>
+<div class="container">
 
 <div class="breadcrumbs">
 	<%= link_to root_path do %>
 		<%= "Home" %>
 	<% end %>
 	<%= ">" %>
-	<span class="current">商品一覧</span>
+	<span class="current">登録済みのお子様一覧</span>
 </div>
 
 
-<table class="table">
-	<tbody>
-		<% @user.children.each do |child| %>
-			<tr>
 
-				<%= attachment_image_tag(child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100') %>
+	<h3 class="toy_select">登録済みのお子様</h3><br>
 
-				<td>
-					<%= child.name %>
-				</td>
-				<td>
-					<% if child.sex == 1 %>
-                		<%= "男の子" %>
-                	<% else %>
-                		<%= "女の子" %>
-                	<% end %>
-				</td>
-				<td>
-					<%= child.age_year %>歳
-					<%= child.age_month %>ヶ月
-				</td>
-				<td>
-					<%= child.temperaments.pluck(:name).join(", ") %>
-				</td>
-				<td>
-				 <%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary' %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+		<div class="row col-md-12 searchfield">
+	        <%= form_with(url: children_path, method: :get, local: true) do |c| %>
+				<%= c.collection_select :search, @user.children.all, :name, :name, {prompt: "お子様を選択して下さい"} %>
+				<%= c.submit 'Search' %>
+			<% end %>
+		</div>
+
+		<div class="row col-md-offset-3 col-md-6">
+			<% @user.children.each do |child| %>
+
+				<div class="row child_archives">
+
+					<div class="col-md-offset-2 col-md-3">
+						<%= attachment_image_tag child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
+					</div>
+
+					<div class="col-md-6 prof-name">
+						<%= child.created_at.strftime('%Y/%m/%d') %><br><br>
+						<%= child.name %><br><br>
+						<%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
+					</div>
+				</div>
+			<% end %>
+			<%= will_paginate @childlen, previous_label: '&lt 前へ', next_label: '次へ &gt', class: "col-md-offset-2 col-md-12" %>
+		</div>
+</div>
+
+

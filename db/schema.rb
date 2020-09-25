@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_20_092007) do
+ActiveRecord::Schema.define(version: 2020_09_25_044402) do
 
   create_table "child_archive_temperaments", force: :cascade do |t|
     t.integer "child_archive_id"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 2020_09_20_092007) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "review_temperaments", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "temperament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_review_temperaments_on_review_id"
+    t.index ["temperament_id"], name: "index_review_temperaments_on_temperament_id"
+  end
+
   create_table "reviewfavorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
@@ -90,6 +99,8 @@ ActiveRecord::Schema.define(version: 2020_09_20_092007) do
     t.integer "effect_id"
     t.float "rate", default: 0.0, null: false
     t.integer "child_id"
+    t.integer "age_year"
+    t.integer "age_month"
   end
 
   create_table "temperaments", force: :cascade do |t|

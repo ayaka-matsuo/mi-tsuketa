@@ -1,15 +1,20 @@
-<h1>こども情報編集ページ</h1>
+<%= render 'layouts/header' %>
 
-<%= form_for(@child) do |f| %>
+<div class="container">
 
-		<table class="table">
+  <h3>お子様情報編集</h3>
 
-              <tr>
-                <td>
+    <div class="row child_archivecontents">
+
+
+        <div class="row col-md-12">
+          <%= form_for(@child) do |f| %>
+            <br>
+              <table class="table">
+               <td>
                   <%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+                
                 </td>
-              </tr>
-
 
               <tr>
                 <th class="active">ニックネーム</th>
@@ -20,8 +25,8 @@
               <tr>
                 <th class="active">性別</th>
                 <td>
-                	<%= f.label :sex, '性別' %>
-                  	<%= f.select :sex, {'男の子': 1, '女の子': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                  <%= f.label :sex, '性別' %>
+                    <%= f.select :sex, {'男の子': 1, '女の子': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
                 </td>
               </tr>
               <tr>
@@ -35,11 +40,13 @@
               <tr>
                 <th class="active">気質</th>
                 <td>
-                	<%= f.label :気質 %><br />
+
+                    <%= f.label :気質 %><br />
                     <%= collection_check_boxes(:child, :temperament_ids, Temperament.all, :id, :name) do |b| %>
                     <%= b.label { b.check_box + b.text } %>
                     <% end %>
-  			    </td>
+                  </div>
+               </td>
               </tr>
 
               <tr>
@@ -66,6 +73,18 @@
                   <%= f.text_field :status, autofocus: true %>
                 </td>
               </tr>
-		</table>
-        	　<%= f.submit "編集する",class: "btn btn-success" %>
-<% end %>
+    </table>
+
+        </div>
+
+        <div class="col-md-offset-5 col-md-9">
+            <%= f.submit "登録する",class: "btn btn-success" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+
+</div>
+
+

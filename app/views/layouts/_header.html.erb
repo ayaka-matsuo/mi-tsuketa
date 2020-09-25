@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: #F8C758">
+<header class="navbar navbar-fixed-top navbar-inverse" style="background-color: white">
 <div class="container">
 <header>
     <nav class="nav navbar-nav navbar-left">
@@ -11,8 +11,9 @@
 
     <ul class="nav navbar-nav navbar-left" >
       <div class="logo">
-        <%= link_to 'ロゴ', root_path  %>
-        <%#= image_tag('icon3.jpg') %><!-- ロゴ追加する -->
+        <%= link_to root_path do  %>
+        <%= image_tag "logo.jpg", size: "95x69" %>
+        <% end %><!-- ロゴ追加する -->
       </div>
     </ul>
 
@@ -22,7 +23,14 @@
         <li></li>
 
         <li>
-          <%= link_to user_path(current_user) do %>
+          <%= link_to homes_about_path do %>
+            <span class="fas fa-question-circle"></span>
+            み〜つけたの特徴と使い方
+          <% end %>
+        </li>
+
+        <li>
+          <%= link_to root_path(anchor: 'ranking') do %>
             <%= image_tag('王冠のアイコン素材.png') %>
             ランキング
           <% end %>
@@ -131,6 +139,6 @@
 </body>
 
 
-<footer class="navbar navbar-fixed-bottom navbar-inverse" style="background-color: #F8C758">
+<footer class="navbar navbar-fixed-bottom navbar-inverse" style="background-color: white">
         <p>CopyRight Infratop.inc</p>
 </footer>

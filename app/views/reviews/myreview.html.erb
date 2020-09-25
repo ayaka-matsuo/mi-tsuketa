@@ -7,33 +7,25 @@
 		<%= "Home" %>
 	<% end %>
 	<%= ">" %>
-	<span class="current">口コミ一覧</span>
+	<span class="current">MyReviews</span>
 </div>
 
 
-	<h3 class="toy_select">最近の口コミ</h3><br>
+	<h3 class="toy_select"><%= @user.name %>さん　の口コミ</h3><br>
 
 		<div class="col-md-12 searchfield">
 
 		<% @reviews.each do |review| %>
 
 						<div class="reviewarea">
-							<div class="col-md-2 review-user">
-								<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
-								<p><%= review.user.name %>さん</p>
-							</div>
-							<div class="col-md-10 review-toy">
+							<div class="col-md-12 review-toy">
 								<div class="reviewscontent">
 									<div class="reviewscontenthead">
 										<p class="reviewday" style="font-size: 10px"><%= review.created_at.strftime('%Y/%m/%d') %></p>
 										<span style="font-size: 10px">使用したお子様の情報:　</span>
-										<% if review.child.sex == 1 %>
-											<%= "男の子" %>|
-										<% else %>
-											<%= "女の子" %>|
-										<% end %>
+										<%= review.child.name  %> |
 										<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
-										<%= review.temperaments.pluck(:name).join(" ・") %>
+										<%= review.child.temperaments.pluck(:name).join(" ・") %>
 									</div><br>
 									<div class="col-md-4 reviewstoy">
 										<%= link_to toy_path(review.toy.id) do %>

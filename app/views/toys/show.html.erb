@@ -8,7 +8,64 @@
     <div class="row">
 
 		    <div class="col-md-offset-1 col-md-4 reviewnewtitle">
-				<%= attachment_image_tag @toy, :toy1_image, format: 'jpeg', size: "300x300", fallback: "no_image.jpg" %>
+
+		    	<%= attachment_image_tag @toy, :toy1_image, format: 'jpeg', size: "300x300", fallback: "no_image.jpg", id: 'mypic' %>
+
+		    	<br>
+
+		    	<input type="button" value="戻る" onclick="go_back()">
+        		<input type="button" value="進む" onclick="go_forward()">
+
+<!--
+<div class="slideshow">
+	<%# @toy_images.each do |toy_image| %>
+	<div class="imgsrc"><%#= attachment_image_tag toy_image.image :toy_image, format:'jpeg', size: '300x300', fallback:"no_imagejpg", id:'mypic' %></div>>
+	<%# end %>
+</div>
+-->
+            <script>
+            var pics_src = new Array(<%=attachment_image_tag @toy, :toy1_image, format: 'jpeg' %>," attachment_image_tag @toy, :toy2_image, format: 'jpeg'","attachment_image_tag @toy, :toy3_image, format: 'jpeg'");
+            var num = 0;
+
+            function go_forward(){
+                if (num == 2) {
+                    num = 0;
+                }
+                else {
+                    num ++;
+                }
+               	alart(pics_src[num]);
+                document.getElementById("mypic").src=pics_src[num];
+            }
+
+            function go_back(){
+                if (num == 0) {
+                    num = 2;
+                }
+                else {
+                    num --;
+                }
+                document.getElementById("mypic").src=pics_src[num];
+            }
+ 　          </script>
+ 
+
+				<% if user_signed_in? %>
+						<div class="toy-index-favorite">
+
+								<% if @toy.toyfavorited_by?(current_user) %>
+				                  <%= link_to toy_toyfavorites_path(@toy), method: :delete do %>
+				                  	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+				                  <% end %>
+				                <% else %>
+				                  <%= link_to toy_toyfavorites_path(@toy), method: :post do %>
+				                  	<i class="far fa-heart"></i>
+				                  <% end %>
+								<% end %>
+								  <%= @toy.toyfavorites.count %>
+						</div>
+						<% end %>
+
 			</div>
 
 			<div class="col-md-7">
@@ -81,7 +138,7 @@
 											<%= "女の子" %>|
 										<% end %>
 										<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
-										<%= review.child.temperaments.pluck(:name).join(" ・") %>
+										<%= review.temperaments.pluck(:name).join(" ・") %>
 									</div><br>
 									<div class="col-md-4 reviewstoy">
 										<%= link_to toy_path(review.toy.id) do %>

@@ -1,0 +1,95 @@
+<%= render 'layouts/header' %>
+
+<div class="container">
+
+	<div class="breadcrumbs">
+		<%= link_to root_path do %>
+			<%= "Home" %>
+		<% end %>
+		<%= ">" %>
+		<span class="current">み〜つけたの特徴と使い方</span>
+	</div>
+
+
+	<br><br>
+
+	<div class="abouthead">
+		<div class="col-md-offset-2 col-md-1">
+			<br><%= image_tag "logo2.jpeg", size: "50x50" %>
+		</div>
+		<div class="col-md-6">
+		<h1>み〜つけた！の特徴と使い方</h1>
+		</div>
+		<div class="col-md-1">
+		<br><%= image_tag "logo3.jpeg", size: "50x50" %>
+		</div>
+	</div>
+
+
+	<br><br><br><br><br><br><br><br><br>
+
+	<div class="abouttitle">
+	<br>
+	<h2>み〜つけた！の特徴</h2>
+	</div>
+
+	<div class="aboutbody">
+	<br><br><br><br>
+	<p>お店選びで失敗したくない人のためのグルメサイト
+
+	食べログは「失敗しないお店選び」をコンセプトにした、月間約9,283万人以上が利用する日本最大級のグルメサイトです。
+	ネットでお店探しをする際に起こりがちな「想像とは違うお店だった」というような失敗をなくすため
+	ユーザーの口コミと共に全国のレストラン情報を掲載しています。</p>
+	</div>
+
+	<br><br><br><br><br><br>
+
+	<div class="abouttitle">
+	<br>
+	<h2>み〜つけた！の使い方</h2>
+	</div>
+
+	<div class="aboutbody">
+
+	<br><br><br><br><br>
+		<div class="row">
+			<div class="col-md-9">
+				<h3>①登録なしでOK！口コミを探そう</h3>
+					<p>「おもちゃをプレゼントしたいけど、たくさんありすぎて何を選んだらいいかわからない・・・」と思うことありませんか？<br>
+					「今はどれが人気なの？」「あの子は喜んでくれるだろうか・・・？」などなど悩むことも多いと思います。<br>
+					　み〜つけた！の口コミには実際におもちゃを使ったお子様の情報が載っています！<br>
+					  性格、環境、性別、年齢が乗っているので、それぞれのお子様に合ったおもちゃ選びができます！</p>
+			</div>
+			<div class="row col-md-3">
+					<%= image_tag "about1.jpeg", size: "300x200" %><!-- イラスト載せる -->
+			</div>
+		</div>
+
+		<br><br><br><br><br><br><br><br><br>
+
+		<div class="row">
+			<div class="col-md-3">
+					<%= image_tag "about2.jpg", size: "300x200" %><!-- イラスト載せる -->
+			</div>
+
+			<div class="col-md-9">
+				<h3>②お子様のおもいでを記録しよう</h3>
+					<p>会員登録して頂くと、口コミが登録できるだけでなく、お子様の成長を記録することができます！<br>お子様の好きなものや嫌いなものや性格は日に日に変化していきます。その日々の大切な成長や思い出を残してみませんか？</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<br><br><br><br><br><br>
+
+	<div class="aboutlast">
+		<div class="aboutlastcontain">
+			<h2>み〜つけたをはじめてみましょう！</h2><br>
+			<%= link_to 'トップページ', root_path, class: 'btn btn-primary', data: {"turbolinks" => false} %>
+		</div>
+	</div>
+
+
+
+
+
