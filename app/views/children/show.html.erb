@@ -2,7 +2,17 @@
 
 <div class="container">
 
-	<h3 class="toy_select">こども詳細画面</h3><br>
+<div class="breadcrumbs">
+	<%= link_to root_path do %>
+		<%= "Home" %>
+	<% end %>
+	<%= ">" %>
+	<span class="current">お子様詳細</span>
+</div>
+
+<div class="container">
+
+	<h3 class="toy_select">お子様詳細画面</h3><br>
 
 		<div class="row child_archivecontents">
 			<div class="col-md-offset-5 col-md-7">

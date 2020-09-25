@@ -1,5 +1,16 @@
+<%= render 'layouts/header' %>
 
-<h1>お子様情報登録画面</h1><br>
+<div class="container">
+
+<div class="breadcrumbs">
+  <%= link_to root_path do %>
+    <%= "Home" %>
+  <% end %>
+  <%= ">" %>
+  <span class="current">お子様情報登録画面</span>
+</div>
+
+<h3 class="toy_select">お子様情報登録画面</h3><br>
 
 <p>おもちゃを使うお子様の情報をご入力ください。レビュー投稿の際に、記載させて頂きます。</p>
 
@@ -68,7 +79,7 @@
               <%= f.hidden_field :user_id, value: @user.id  %>
 
 		</table>
-        	　<%= f.submit "登録する",class: "btn btn-success" %>
+        	　<%= f.submit "登録する", class: 'btn btn-primary centerbtn' %>
 <% end %>
 
 

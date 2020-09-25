@@ -2,7 +2,17 @@
 
 <div class="container">
 
-  <h3>おもいで編集</h3>
+<div class="breadcrumbs">
+  <%= link_to root_path do %>
+    <%= "Home" %>
+  <% end %>
+  <%= ">" %>
+  <span class="current">おもいで編集</span>
+</div>
+
+<div class="container">
+
+  <h3 class="toy_select">おもいで編集</h3>
 
     <div class="row child_archivecontents">
       <div class="col-md-offset-2 col-md-9">
