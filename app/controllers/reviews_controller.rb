@@ -13,9 +13,12 @@ class ReviewsController < ApplicationController
 
   def create
     @toy = Toy.find(params[:toy_id])
+    @child = Child.find(params[:review][:child_id])
     @review = current_user.reviews.new(review_params)
     @review.toy_id = @toy.id
-    @review.user.id = current_user.id
+    @review.user_id = current_user.id
+    @review.age_year = @child.age_year
+    @review.age_month = @child.age_month
     review_params_temperament_ids.each do |temperament_id|
       @review.review_temperaments.build(temperament_id: temperament_id)
     end

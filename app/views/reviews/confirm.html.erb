@@ -65,8 +65,6 @@
 				  <%= f.input :effect_id, as: :hidden %>
 				  <%= f.input :body, as: :hidden %>
 				  <%= f.input :child_id, as: :hidden %>
-				  <%= f.input :age_year, value: @review.child.age_year, as: :hidden %>
-				  <%= f.input :age_month, value: @review.child.age_month, as: :hidden %>
 				  <% @review.child.temperaments.each do |temp| %>
 <!--				  <%= f.input :temperament_ids, value: @review.child.temperament_ids, as: :hidden %>-->
 					<input type="hidden" name="temperament_ids[]" value="<%=temp.id %>">
