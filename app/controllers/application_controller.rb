@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
         root_path  #　指定したいパスに変更
     end
 
+    def authenticate_user
+
+if @current_user == nil
+
+redirect_to("/login")
+
+end
+
+end
+
   protected
 
   def configure_permitted_parameters

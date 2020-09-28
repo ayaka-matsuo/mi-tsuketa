@@ -1,5 +1,7 @@
 class ToyfavoritesController < ApplicationController
 
+  before_action :authenticate_user!
+
 	def create
 	toy = Toy.find(params[:toy_id])
     toyfavorite = current_user.toyfavorites.new(toy_id: toy.id)

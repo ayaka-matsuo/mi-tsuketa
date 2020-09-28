@@ -272,6 +272,7 @@ footer {
 }
 .mypagereviewcontain {
   text-align: center;
+  font-size: 12px;
 }
 .centerbtn{
   text-align: center;
@@ -282,6 +283,7 @@ footer {
   font-size: 10px;
   border: 2px solid #c9caca;
   padding: 0;
+  text-align: center;
 }
 .mypagetoyfavorite {
   width: 180px;
@@ -310,6 +312,7 @@ footer {
 }
 .mypagefavoritereview {
   text-align: center;
+  font-size: 12px;
 }
 .right-sidebar {
   margin-left: 10px;
@@ -358,9 +361,20 @@ footer {
   border-radius: 15px;
   border: 2px solid #808080;
 }
-.loginbtn {
+
+.mypagenocontants {
   text-align: center;
-  background-color: #f6ae54;
-  border-radius: 15px;
-  width: 300px;
+}
+.formselectsex {
+  width: 10px;
+}
+.signupformbtn {
+  text-align: center;
+}
+
+.btn-orange {
+  background: #f6ae54;
+    color: black;
+    border: none;
+    margin-bottom: 5px;
 }

@@ -13,5 +13,12 @@ class User < ApplicationRecord
   has_many :reviewfavorites, dependent: :destroy
   has_many :liked_reviews, through: :reviewfavorites, source: :review
 
+  validates :email, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates :sex, presence: true
+  validates :place, presence: true
+
+
+
 
 end

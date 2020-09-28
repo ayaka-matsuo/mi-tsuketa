@@ -9,6 +9,14 @@ class Review < ApplicationRecord
     has_many :temperaments, through: :review_temperaments
     accepts_nested_attributes_for :review_temperaments, allow_destroy: true
 
+
+    validates :body, presence: true
+    validates :effect_id, presence: true
+    validates :rate, presence: true
+    validates :age_year, presence: true
+    validates :age_month, presence: true
+
+
 	def reviewfavorited_by?(user)
     reviewfavorites.where(user_id: user.id).exists?
   end

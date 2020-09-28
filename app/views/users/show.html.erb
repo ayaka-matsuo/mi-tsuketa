@@ -30,8 +30,10 @@
 					<div class="mypagetitle">
 					<h4><%= @user.name %>さんの最近の口コミ</h4>
 					</div>
+
+						<% if @review.present? %>
+
 							<% @review.each do |review| %>
-							<% if review.present? %>
 
 							<div>
 								<div class="mypagecontent">
@@ -40,7 +42,8 @@
 										<div class="reviewscontenthead">
 											<p class="reviewday"><%= review.created_at.strftime('%Y/%m/%d') %></p>
 											<p class="mypagereview">使用したお子様の情報:
-											<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
+											<%= review.child.name %>  ｜
+											<%= review.age_year %>歳  <%= review.age_month %>ヶ月  |
 											<%= review.temperaments.pluck(:name).join(",") %>
 											</p>
 										</div><br>
@@ -68,24 +71,24 @@
 									          });
 									          </script>
 					        				<!--/星評価-->
-					        				<br><br><br><%= review.body %>
+					        				<br><br><br><%= review.body.truncate(30) %>
+										</div>
+
+										<div class="centerbtn">
+											<%= link_to 'もっと見る', toy_review_myreview_path(1,1), class: 'btn btn-primary', data: {"turbolinks" => false} %>
 										</div>
 									</div>
 								</div>
 								</div>
-								<div class="centerbtn">
-									<%= link_to 'もっと見る', toy_review_myreview_path(1,1), class: 'btn btn-primary', data: {"turbolinks" => false} %>
-
-								</div>
 							</div>
+							<% end %>
 						<% else %>
-						<div>
-							<div class="mypagecontent">
-								<%= 投稿がまだありません %>
-							</div>
-						</div>
+								<div class="mypagecontent">
+									<div class="col-md-12 mypagenocontants">
+										<p>投稿した口コミはありません。</p>
+									</div>
+								</div>
 						<% end %>
-					<% end %>
 				</div>
 
 				<div class="row">
@@ -96,43 +99,53 @@
 						<div>
 							<div class="mypagecontent">
 
-								<% @user.liked_toys.each do |toy| %>
-								<div class="col-md-3 mypagetoyfavorite">
-									<div class="panel panel-default">
+								<% if @user.liked_toys.present? %>
+									<% @user.liked_toys.each do |toy| %>
+									<div class="col-md-3 mypagetoyfavorite">
+										<div class="panel panel-default">
 
-										<div class="panel-heading text-center">
-											<%= link_to toy_path(toy.id) do %>
-											<%= attachment_image_tag toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
-											<% end %>
-										</div>
-
-										<div class="panel-body">
-											<p class="product-brand"><%= toy.manufacturer %></p>
-											<p class="toyfavorite-title">
+											<div class="panel-heading text-center">
 												<%= link_to toy_path(toy.id) do %>
-													<%= toy.name %>
+												<%= attachment_image_tag toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
 												<% end %>
-											</p>
+											</div>
+
+											<div class="panel-body">
+												<p class="product-brand"><%= toy.manufacturer %></p>
+												<p class="toyfavorite-title">
+													<%= link_to toy_path(toy.id) do %>
+														<%= toy.name %>
+													<% end %>
+												</p>
+											</div>
+
+											<div class="mypage-panel-footer">
+
+													<% if toy.toyfavorited_by?(current_user) %>
+									                  <%= link_to toy_toyfavorites_path(toy), method: :delete do %>
+									                  	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+									                  <% end %>
+									                <% else %>
+									                  <%= link_to toy_toyfavorites_path(toy), method: :post do %>
+									                  	<i class="far fa-heart"></i>
+									                  <% end %>
+													<% end %>
+													  <%= toy.toyfavorites.count %>
+											</div>
+
+
+
 										</div>
-
-										<div class="mypage-panel-footer">
-
-												<% if toy.toyfavorited_by?(current_user) %>
-								                  <%= link_to toy_toyfavorites_path(toy), method: :delete do %>
-								                  	<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-								                  <% end %>
-								                <% else %>
-								                  <%= link_to toy_toyfavorites_path(toy), method: :post do %>
-								                  	<i class="far fa-heart"></i>
-								                  <% end %>
-												<% end %>
-												  <%= toy.toyfavorites.count %>
-										</div>
-
-
-
 									</div>
-								</div>
+								<% end %>
+								<% else %>
+									<div>
+										<div class="mypagecontent">
+										<div class="col-md-12 mypagenocontants">
+											<p>いいねしたおもちゃはありません。</p>
+										</div>
+										</div>
+									</div>
 								<% end %>
 							</div>
 						</div>
@@ -146,50 +159,59 @@
 					<div>
 							<div class="mypagecontent">
 
-								<% @user.liked_reviews.each do |review| %>
 
-									<div>
-										<div class="col-md-2 review-toy">
-											<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "70x70", fallback: "no_image.jpg" %><br>
-											<%= review.user.name %>さん
-										</div>
-										<div class="col-md-10 review-toy">
-											<div class="reviewscontent">
-												<div class="reviewscontenthead">
-													<p class="toyfavorite-title"><%= review.created_at.strftime('%Y/%m/%d') %></p>
-													使用したお子様の情報:
-													<%= review.child.age_year %>歳<%= review.child.age_month %>ヶ月 |
-													<%= review.child.temperaments.pluck(:name).join(",") %>
-												</div><br>
-												<div class="col-md-4 toyfavorite-title">
-													<%= link_to toy_path(review.toy.id) do %>
-														<%= attachment_image_tag review.toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
+								<% if @user.liked_reviews.present? %>
+									<% @user.liked_reviews.each do |review| %>
+
+										<div>
+											<div class="col-md-2 review-user">
+												<%= attachment_image_tag review.user, :profile_image, format: 'jpeg', size: "70x70", fallback: "no_image.jpg" %><br>
+												<%= review.user.name %>さん
+											</div>
+											<div class="col-md-10 review-toy">
+												<div class="reviewscontent">
+													<div class="reviewscontenthead">
+														<p class="toyfavorite-title"><%= review.created_at.strftime('%Y/%m/%d') %></p>
+														使用したお子様の情報:
+														<%= review.age_year %>歳<%= review.age_month %>ヶ月 |
+														<%= review.child.temperaments.pluck(:name).join(",") %>
+													</div><br>
+													<div class="col-md-4 toyfavorite-title">
+														<%= link_to toy_path(review.toy.id) do %>
+															<%= attachment_image_tag review.toy, :toy1_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %><br>
+														<% end %>
+														<%= link_to toy_path(review.toy.id) do %>
+														<%= review.toy.name %><br>
 													<% end %>
-													<%= link_to toy_path(review.toy.id) do %>
-													<%= review.toy.name %><br>
-												<% end %>
-												</div>
-												<div class="col-md-8 mypagefavoritereview">
-									         <!--星評価-->
-											         <div id="star-rate-<%= review.id %>"><%= review.rate %><%="　"%></div>
-											          <script>
-											          $('#star-rate-<%= review.id %>').raty({
-											            size: 36,
-											            starOff:  '<%= asset_path('star-off.png') %>',
-											            starOn : '<%= asset_path('star-on.png') %>',
-											            starHalf: '<%= asset_path('star-half.png') %>',
-											            half: true,
-											            readOnly: true,
-											            score: <%= review.rate %>,
-											          });
-											          </script>
-							        				<!--/星評価-->
-							        				<br><br><%= review.body %>
+													</div>
+													<div class="col-md-8 mypagefavoritereview">
+										         <!--星評価-->
+												         <div id="star-rate-<%= review.id %>"><%= review.rate %><%="　"%></div>
+												          <script>
+												          $('#star-rate-<%= review.id %>').raty({
+												            size: 36,
+												            starOff:  '<%= asset_path('star-off.png') %>',
+												            starOn : '<%= asset_path('star-on.png') %>',
+												            starHalf: '<%= asset_path('star-half.png') %>',
+												            half: true,
+												            readOnly: true,
+												            score: <%= review.rate %>,
+												          });
+												          </script>
+								        				<!--/星評価-->
+								        				<br><br><%= review.body.truncate(30) %>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-								<% end %>
+									<% end %>
+									<% else %>
+										<div class="mypagecontent">
+											<div class="col-md-12 mypagenocontants">
+												<p>いいねした口コミはありません。</p>
+											</div>
+										</div>
+									<% end %>
 							</div>
 					</div>
 			</div>
@@ -198,18 +220,32 @@
 		<div class="col-md-3">
 				<div class="row right-sidebar">
 					<h4 class="mypagetitle">登録済みのお子様</h4>
+
+					<% if @user.children.present? %>
 					<% @user.children.last(2).each do |child| %>
 
-						<div class="mypagechild">
-							<%= link_to edit_child_path(child.id) do %>
-								<%= attachment_image_tag child, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
-							<% end %>
-							<%= child.name %><br>
-							<%= child.temperaments.pluck(:name).join("/") %>
-						</div>
+							<div class="mypagechild">
+								<%= link_to edit_child_path(child.id) do %>
+									<%= attachment_image_tag child, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+								<% end %>
+								<%= child.name %><br>
+								<%= child.temperaments.pluck(:name).join("/") %>
+							</div>
 					<% end %>
 					<%= link_to 'もっと見る', children_path(@user), class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
 					<%= link_to 'お子様を登録する', new_child_path, class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
+
+					<% else %>
+						<div>
+							<div class="mypagecontent">
+								<div class="col-md-12 mypagenocontants">
+									<p>登録がまだありません。</p>
+								</div>
+							</div>
+							<%= link_to 'お子様を登録する', new_child_path, class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
+						</div>
+					<% end %>
+
 				</div>
 
 				<br>
@@ -217,17 +253,27 @@
 
 				<div class="row right-sidebar">
 					<h4 class="mypagetitle">最近のおもいで</h4>
-					<% @user.child_archives.last(2).each do |child_archive| %>
 
-					<div class="mypagechild">
-						<%= link_to edit_child_archive_path(child_archive.id) do %>
-							<%= attachment_image_tag child_archive, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+					<% if @child_archives.present? %>
+					<% @child_archives.each do |child_archive| %>
+
+							<div class="mypagechild">
+								<%= link_to child_archive_path(child_archive.id) do %>
+									<%= attachment_image_tag child_archive, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+								<% end %>
+								<%= child_archive.created_at.strftime('%Y/%m/%d') %><br>
+								<%= child_archive.child.name %><br>
+							</div>
 						<% end %>
-						<%= child_archive.created_at.strftime('%Y/%m/%d') %><br>
-						<%= child_archive.child.name %><br>
-					</div>
-					<% end %>
 					<%= link_to 'もっと見る', child_archives_path(@user), class: 'btn btn-primary col-md-offset-3 col-md-6', data: {"turbolinks" => false} %>
+
+					<% else %>
+						<div class="mypagecontent">
+							<div class="col-md-12 mypagenocontants">
+								<p>登録がまだありません。</p>
+							</div>
+						</div>
+					<% end %>
 				</div>
 		</div>
 	</div>

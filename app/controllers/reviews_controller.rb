@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_action :authenticate_user!, only: [:new, :confirm, :create, :myreview]
+
   def new
     @toy = Toy.find(params[:toy_id])
     @review = current_user.reviews.new
@@ -33,6 +35,11 @@ class ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+  end
+
+  def show
+    @toy = Toy.find(params[:toy_id])
+    @review = Review.find(params[:id])
   end
 
 
