@@ -79,3 +79,6 @@ group :production do
   gem 'mysql2'
 end
 gem 'font-awesome-sass', '~> 5.10.2'
+
+gem 'devise-i18n'
+gem 'devise-i18n-views'
