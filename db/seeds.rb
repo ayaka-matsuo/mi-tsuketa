@@ -359,10 +359,10 @@ Child.create!(
 )
 
 
-# ChildTemperament.create!(
-   # child_id: '1',
-   # :temperament_ids[] '[1], [3], [4]',
-#)
+ ChildTemperament.create!(
+    child_id: '1',
+    :temperament_ids[] ['1', '3', '4'],
+)
 
 Child_archive.create!(
    child_id: '1',
@@ -377,10 +377,10 @@ Child_archive.create!(
    status: 'ママ・パパ大好き！',
 )
 
-#ChildArchiveTemperament.create!(
-   # child_archive_id: '1',
-   # :temperament_ids[] '[1], [3], [4]',
-#)
+ChildArchiveTemperament.create!(
+    child_archive_id: '1',
+    :temperament_ids[] ['1', '3', '4'],
+)
 
 
 
