@@ -361,7 +361,7 @@ Child.create!(
 
 ChildTemperament.create!(
    child_id: '1',
-   :temperament_ids[] ['1', '3', '4']
+   :temperament_ids[] ['1' '3' '4']
 )
 
 ChildArchive.create!(
@@ -379,7 +379,7 @@ ChildArchive.create!(
 
 ChildArchiveTemperament.create!(
    child_archive_id: '1',
-   :temperament_ids[] ['1', '3', '4']
+   :temperament_ids[] ['1' '3' '4']
 )
 
 
