@@ -17,6 +17,7 @@ User.create!(
 
 )
 
+
 Genre.create!(
 [
 	{
@@ -343,6 +344,47 @@ Effect.create!(
 		name: '助かりました',
 	},
 ]
+)
+
+
+Child.create!(
+   user_id: '1',
+   sex: '1',
+   age_year: '3',
+   age_month: '2',
+   sex: '2',
+   name: 'testchild',
+   environment: '1'
+   favorite_thing: 'アンパンマン',
+   un_favorite_thing: 'ピーマン',
+   password_confirmation: '123456',
+   status: 'ママ・パパ大好き！',
+)
+
+
+ChildTemperament.create!(
+   child_id: '1',
+   temperament_ids:['1', '5', '6'],
+)
+
+ChildArchive.create!(
+   child_id: '1',
+   user_id: '1',
+   sex: '1',
+   age_year: '3',
+   age_month: '2',
+   sex: '2',
+   name: 'testchild',
+   environment: '1'
+   favorite_thing: 'アンパンマン',
+   un_favorite_thing: 'ピーマン',
+   password_confirmation: '123456',
+   status: 'ママ・パパ大好き！',
+)
+
+ChildArchiveTemperament.create!(
+   child_archive_id: '1',
+   temperament_ids:['1', '5', '6'],
 )
 
 
