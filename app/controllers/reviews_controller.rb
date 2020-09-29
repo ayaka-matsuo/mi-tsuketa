@@ -52,6 +52,7 @@ class ReviewsController < ApplicationController
     @reviews = @user.reviews.all
   end
 
+
   private
   def review_params
     params.require(:review).permit(:body, :effect_id, :toy_id, :rate, :user_id, :child_id)

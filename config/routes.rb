@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
 resources :users, only: [:show, :edit, :update]
 resources :toys do
+  get :toysnologin
 	resource :toyfavorites, only: [:create, :destroy]
 	resources :reviews do
     get :myreview

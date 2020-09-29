@@ -38,6 +38,11 @@ class ToysController < ApplicationController
     end
   end
 
+  def toysnologin
+     @toys = Toy.paginate(page: params[:page], per_page: 20).search(params[:search])
+  end
+
+
   def destroy
   end
 

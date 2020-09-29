@@ -13,13 +13,24 @@
 <div>
 	<h3 class="topsearch">口コミを探す</h3>
 
-		<div class="col-md-12 searchfield">
+		<% if user_signed_in? %>
+			<div class="col-md-12 searchfield">
 
-			<%= form_tag(toys_path, :method => "get") do %>
-			 <%= text_field_tag :search, '', placeholder: 'キーワードを入力して下さい', :size=>"40x100" %>
-			<%= submit_tag "検索" ,:name => nil ,class: "btn-info"%>
-			<% end %>
-		</div>
+				<%= form_tag(toys_path, :method => "get") do %>
+				 <%= text_field_tag :search, '', placeholder: 'キーワードを入力して下さい', :size=>"40x100" %>
+				<%= submit_tag "検索" ,:name => nil ,class: "btn-info"%>
+				<% end %>
+			</div>
+		<% else %>
+			<div class="col-md-12 searchfield">
+
+				<%= form_tag(toy_toysnologin_path(1), :method => "get") do %>
+				 <%= text_field_tag :search, '', placeholder: 'キーワードを入力して下さい', :size=>"40x100" %>
+				<%= submit_tag "検索" ,:name => nil ,class: "btn-info"%>
+				<% end %>
+			</div>
+		<% end %>
+
 </div>
 
 
