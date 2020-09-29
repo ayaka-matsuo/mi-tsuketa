@@ -40,7 +40,6 @@ class ChildrenController < ApplicationController
 
   def index
     @user = current_user
-    @childlen = Child.search(params[:search]).paginate(page: params[:page], per_page: 5)
 
   end
 
@@ -81,7 +80,7 @@ class ChildrenController < ApplicationController
 
   private
   def child_params
-    params.require(:child).permit(:name, :sex, :age_year, :age_month, :environment, :favorite_thing, :un_favorite_thing, :status, :profile_image, temperament_ids:[],
+    params.require(:child).permit(:name, :sex, :age_year, :age_month, :environment, :favorite_thing, :un_favorite_thing, :status, :profile_image, :user_id, temperament_ids:[],
       child_archives_attributes: [:id,:age_year, :age_month, :environmente, :favorite_thing, :un_favorite_thing, :status, :profile_image, :memo, :name, :user_id, temperament_ids:[]])
     end
 
