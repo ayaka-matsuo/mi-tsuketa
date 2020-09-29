@@ -364,7 +364,7 @@ Child.create!(
    # :temperament_ids[] '[1], [3], [4]',
 #)
 
-ChildArchive.create!(
+Child_archive.create!(
    child_id: '1',
    user_id: '1',
    sex: '1',
