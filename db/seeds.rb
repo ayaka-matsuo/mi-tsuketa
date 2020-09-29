@@ -375,7 +375,7 @@ ChildArchive.create!(
    age_month: '2',
    sex: '2',
    name: 'testchild',
-   environment: '1'
+   environment: '1',
    favorite_thing: 'アンパンマン',
    un_favorite_thing: 'ピーマン',
    password_confirmation: '123456',
