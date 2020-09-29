@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 
 User.create!(
    email: 'test@test.com',
@@ -347,12 +341,12 @@ Effect.create!(
 )
 
 Child.create!(
-   user_id: '1',
-   sex: '1',
-   age_year: '3',
-   age_month: '2',
+   user_id: 1,
+   sex: 1,
+   age_year: 3,
+   age_month: 2,
    name: 'testchild',
-   environment: '1',
+   environment: 1,
    favorite_thing: 'アンパンマン',
    un_favorite_thing: 'ピーマン',
    status: 'ママ・パパ大好き！',
@@ -360,26 +354,41 @@ Child.create!(
 
 
  ChildTemperament.create!(
-    child_id: '1',
-    :temperament_ids[] ['1', '3', '4'],
+    child_id: 1,
+    temperament_id: 1,
+)
+ChildTemperament.create!(
+    child_id: 1,
+    temperament_id: 5,
+)
+ChildTemperament.create!(
+    child_id: 1,
+    temperament_id: 3,
 )
 
-Child_archive.create!(
-   child_id: '1',
-   user_id: '1',
-   sex: '1',
-   age_year: '3',
-   age_month: '2',
+ChildArchive.create!(
+   child_id: 1,
+   user_id: 1,
+   age_year: 3,
+   age_month: 2,
    name: 'testchild',
-   environment: '1',
+   environment: 1,
    favorite_thing: 'アンパンマン',
    un_favorite_thing: 'ピーマン',
    status: 'ママ・パパ大好き！',
 )
 
 ChildArchiveTemperament.create!(
-    child_archive_id: '1',
-    :temperament_ids[] ['1', '3', '4'],
+    child_archive_id: 1,
+    temperament_id: 1,
+)
+ChildArchiveTemperament.create!(
+    child_archive_id: 1,
+    temperament_id: 5,
+)
+ChildArchiveTemperament.create!(
+    child_archive_id: 1,
+    temperament_id: 3,
 )
 
 

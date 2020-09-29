@@ -13,8 +13,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.user_id = current_user.id
     @user = current_user
-    if
-      @child.save
+    if @child.save
       flash[:notice] = "おこさまの情報を登録しました"
       redirect_to user_path(@user.id)
 
