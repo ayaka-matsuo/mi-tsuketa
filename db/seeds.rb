@@ -346,18 +346,15 @@ Effect.create!(
 ]
 )
 
-
 Child.create!(
    user_id: '1',
    sex: '1',
    age_year: '3',
    age_month: '2',
-   sex: '2',
    name: 'testchild',
    environment: '1',
    favorite_thing: 'アンパンマン',
    un_favorite_thing: 'ピーマン',
-   password_confirmation: '123456',
    status: 'ママ・パパ大好き！',
 )
 
@@ -373,12 +370,10 @@ ChildArchive.create!(
    sex: '1',
    age_year: '3',
    age_month: '2',
-   sex: '2',
    name: 'testchild',
    environment: '1',
    favorite_thing: 'アンパンマン',
    un_favorite_thing: 'ピーマン',
-   password_confirmation: '123456',
    status: 'ママ・パパ大好き！',
 )
 
