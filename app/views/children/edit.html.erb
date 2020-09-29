@@ -19,6 +19,19 @@
 
         <div class="row col-md-12">
           <%= form_for(@child) do |f| %>
+
+          <% if @child.errors.any? %>
+            <div id="error_explanation" class="alert alert-danger">
+              <ul>
+                <% @child.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+
+
             <br>
               <table class="table">
                <td>
@@ -59,12 +72,6 @@
                </td>
               </tr>
 
-              <tr>
-                <th class="active">お住まいの種類</th>
-                <td>
-                  <%= f.select :environment, {'マンション・アパート': true, '一軒家': false}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-                </td>
-              </tr>
               <tr>
                 <th class="active">好きなもの</th>
                 <td>

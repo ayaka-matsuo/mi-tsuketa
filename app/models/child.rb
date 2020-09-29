@@ -13,7 +13,6 @@ validates :sex, presence: true
 validates :age_year, presence: true, numericality: { only_integer: true }
 validates :age_month, presence: true, numericality: { only_integer: true }
 validates :name, presence: true
-validates :environment, presence: true
 validates :favorite_thing, presence: true
 validates :un_favorite_thing, presence: true
 validates :status, presence: true

@@ -16,6 +16,17 @@
 
 <%= form_for(@child) do |f| %>
 
+
+  <% if @child.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @child.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 		<table class="table">
               <tr>
                 <th class="active">ニックネーム</th>
@@ -51,12 +62,6 @@
               </tr>
 
               <tr>
-                <th class="active">お住まいの種類</th>
-                <td>
-                  <%= f.select :environment, {'マンション・アパート': true, '一軒家': false}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-                </td>
-              </tr>
-              <tr>
                 <th class="active">好きなもの</th>
                 <td>
                   <%= f.text_field :favorite_thing, autofocus: true %>
@@ -81,6 +86,10 @@
 		</table>
         	　<%= f.submit "登録する", class: 'btn btn-primary centerbtn' %>
 <% end %>
+
+
+
+
 
 
 

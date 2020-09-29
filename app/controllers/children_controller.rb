@@ -21,7 +21,6 @@ class ChildrenController < ApplicationController
       child_archive.child_id = @child.id
       child_archive.age_year = @child.age_year
       child_archive.age_month = @child.age_month
-      child_archive.environment = @child.environment
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
@@ -30,7 +29,6 @@ class ChildrenController < ApplicationController
       child_archive.name = @child.name
       child_archive.user_id = current_user.id
       child_archive.save
-
     else
       flash[:notice] = "登録できませんでした"
       render :new
@@ -60,7 +58,6 @@ class ChildrenController < ApplicationController
       child_archive.child_id = @child.id
       child_archive.age_year = @child.age_year
       child_archive.age_month = @child.age_month
-      child_archive.environment = @child.environment
       child_archive.favorite_thing = @child.favorite_thing
       child_archive.un_favorite_thing = @child.un_favorite_thing
       child_archive.status = @child.status
@@ -77,10 +74,11 @@ class ChildrenController < ApplicationController
   end
   end
 
+
   private
   def child_params
-    params.require(:child).permit(:name, :sex, :age_year, :age_month, :environment, :favorite_thing, :un_favorite_thing, :status, :profile_image, :user_id, temperament_ids:[],
-      child_archives_attributes: [:id,:age_year, :age_month, :environmente, :favorite_thing, :un_favorite_thing, :status, :profile_image, :memo, :name, :user_id, temperament_ids:[]])
+    params.require(:child).permit(:name, :sex, :age_year, :age_month, :favorite_thing, :un_favorite_thing, :status, :profile_image, :user_id, temperament_ids:[],
+      child_archives_attributes: [:id,:age_year, :age_month, :favorite_thing, :un_favorite_thing, :status, :profile_image, :memo, :name, :user_id, temperament_ids:[]])
     end
 
 end
