@@ -1,41 +1,38 @@
 
-
-
-
 <%= render 'layouts/header' %>
 
 <div class="container">
 
-<div class="breadcrumbs">
-	<%= link_to root_path do %>
-		<%= "Home" %>
-	<% end %>
-	<%= ">" %>
-	<span class="current">登録済みのお子様一覧</span>
-</div>
+  <div class="breadcrumbs">
+    <%= link_to root_path do %>
+      <%= "Home" %>
+    <% end %>
+    <%= ">" %>
+    <span class="current">登録済みのお子様一覧</span>
+  </div>
 
 
 
-	<h3 class="toy_select">登録済みのお子様</h3><br>
+  <h3 class="toy_select">登録済みのお子様</h3><br>
 
 
-		<div class="row col-md-offset-3 col-md-6">
-			<% @user.children.each do |child| %>
+    <div class="row col-md-offset-3 col-md-6">
+      <% @user.children.each do |child| %>
 
-				<div class="row child_archives">
+        <div class="row child_archives">
 
-					<div class="col-md-offset-2 col-md-3">
-						<%= attachment_image_tag child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
-					</div>
+          <div class="col-md-offset-2 col-md-3">
+            <%= attachment_image_tag child, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size: '100x100' %>
+          </div>
 
-					<div class="col-md-6 prof-name">
-						<%= child.created_at.strftime('%Y/%m/%d') %><br><br>
-						<%= child.name %><br><br>
-						<%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
-					</div>
-				</div>
-			<% end %>
-		</div>
+          <div class="col-md-6 prof-name">
+            <%= child.created_at.strftime('%Y/%m/%d') %><br><br>
+            <%= child.name %><br><br>
+            <%= link_to '詳しくみる', child_path(child.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 </div>
 
 

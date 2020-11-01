@@ -1,16 +1,16 @@
 class GenresController < ApplicationController
   def index
-  	@genres = Genre.all
+    @genres = Genre.all
   end
 
   def new
-  	@genre = Genre.new
+    @genre = Genre.new
   end
 
 
   def create
-  	@genre = Genre.new(genre_params)
-  	if @genre.save
+    @genre = Genre.new(genre_params)
+    if @genre.save
       redirect_to genres_path(@genre), notice: "追加完了"
     else
       @genre = Genre.new

@@ -27,7 +27,7 @@
   </div>
 <% end %>
 
-		<table class="table">
+    <table class="table">
               <tr>
                 <th class="active">ニックネーム</th>
                 <td><%= f.text_field :name, autofocus: true %>
@@ -37,8 +37,8 @@
               <tr>
                 <th class="active">性別</th>
                 <td>
-                	<%= f.label :sex, '性別' %>
-                  	<%= f.select :sex, {'男の子': 1, '女の子': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+                  <%= f.label :sex, '性別' %>
+                  <%= f.select :sex, {'男の子': 1, '女の子': 2}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
                 </td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@
                     <%= b.label { b.check_box + b.text } %>
                     <% end %>
                   </div>
-  			       </td>
+                </td>
               </tr>
 
               <tr>
@@ -83,8 +83,8 @@
 
               <%= f.hidden_field :user_id, value: @user.id  %>
 
-		</table>
-        	　<%= f.submit "登録する", class: 'btn btn-primary centerbtn' %>
+    </table>
+      <%= f.submit "登録する", class: 'btn btn-primary centerbtn' %>
 <% end %>
 
 

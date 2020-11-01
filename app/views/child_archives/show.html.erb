@@ -2,83 +2,79 @@
 
 <div class="container">
 
-<div class="breadcrumbs">
-	<%= link_to root_path do %>
-		<%= "Home" %>
-	<% end %>
-	<%= ">" %>
-	<span class="current">おもいで詳細</span>
-</div>
+  <div class="breadcrumbs">
+    <%= link_to root_path do %>
+      <%= "Home" %>
+    <% end %>
+    <%= ">" %>
+    <span class="current">おもいで詳細</span>
+  </div>
 
-<div class="container">
+  <div class="container">
 
-	<h3 class="toy_select">おもいで詳細</h3><br>
+    <h3 class="toy_select">おもいで詳細</h3><br>
 
-		<div class="row child_archivecontents">
-			<div class="col-md-offset-3 col-md-9">
-				<div class="row">
-						<div class="col-md-5">
-							<%= attachment_image_tag @child_archive, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
-						</div>
-						<div class="col-md-7 child_archivep">
-							<br><br>
-							<%= @child_archive.created_at.strftime('%Y/%m/%d') %><br>
-							<h3><%= @child_archive.child.name %></h3><br>
-							<%= @child_archive.age_year %>歳
-							<%= @child_archive.age_month %>ヶ月
-						</div>
-				</div>
+      <div class="row child_archivecontents">
+        <div class="col-md-offset-3 col-md-9">
+          <div class="row">
+            <div class="col-md-5">
+              <%= attachment_image_tag @child_archive, :profile_image, :fill, 200, 200, fallback: "no_image.jpg", size: '200x200' %>
+            </div>
+            <div class="col-md-7 child_archivep">
+              <br><br>
+              <%= @child_archive.created_at.strftime('%Y/%m/%d') %><br>
+              <h3><%= @child_archive.child.name %></h3><br>
+              <%= @child_archive.age_year %>歳
+              <%= @child_archive.age_month %>ヶ月
+            </div>
+          </div>
 
-				<div class="row col-md-7">
+          <div class="row col-md-7">
 
-						<br><table class="table">
-							<tbody>
+            <br>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th class="active">性格タイプ</th>
+                  <th>
+                    <%= @child_archive.temperaments.pluck(:name).join(", ") %>
+                  </th>
+                </tr>
 
-					  			<tr>
-					  				<th class="active">性格タイプ</th>
-					  				<th>
-					  					<%= @child_archive.temperaments.pluck(:name).join(", ") %>
-					  				</th>
-				  				</tr>
+                <tr>
+                  <th class="active">好きなもの</th>
+                  <th><%= @child_archive.favorite_thing %></th>
+                </tr>
 
+                <tr>
+                  <th class="active">嫌いなもの</th>
+                  <th><%= @child_archive.un_favorite_thing %></th>
+                </tr>
 
-					  			<tr>
-					  				<th class="active">好きなもの</th>
-					  				<th><%= @child_archive.favorite_thing %>
-					  				</th>
-				  				</tr>
+                <tr>
+                  <th class="active">最近覚えた言葉・口癖</th>
+                  <th><%= @child_archive.status %></th>
+                </tr>
 
-				  				<tr>
-					  				<th class="active">嫌いなもの</th>
-					  				<th><%= @child_archive.un_favorite_thing %>
-					  				</th>
-				  				</tr>
+                <tr>
+                  <th class="active">メモ</th>
+                  <th><% if @child_archive.memo == nil %>
+                        <%= "登録がありません"%>
+                      <% else %>
+                        <%= @child_archive.memo %>
+                      <% end %>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
 
-				  				<tr>
-					  				<th class="active">最近覚えた言葉・口癖</th>
-					  				<th><%= @child_archive.status %>
-					  				</th>
-				  				</tr>
+          </div>
 
-				  				<tr>
-					  				<th class="active">メモ</th>
-					  				<th><% if @child_archive.memo == nil %>
-					  						<%= "登録がありません"%>
-					  					<% else %>
-					  						<%= @child_archive.memo %>
-					  					<% end %>
-					  				</th>
-				  				</tr>
-							</tbody>
-						</table>
-				</div>
-
-				<div class="col-md-offset-2 col-md-9">
-						 <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
-						 <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary', data: {"turbolinks" => false} %>
-				</div>
-			</div>
-		</div>
-
+          <div class="col-md-offset-2 col-md-9">
+            <%= link_to '編集する', edit_child_archive_path(@child_archive.id), class: 'btn btn-primary', data: {"turbolinks" => false} %>
+            <%= link_to 'おもいでをみる', child_archives_path(@user), class: 'btn btn-primary', data: {"turbolinks" => false} %>
+          </div>
+        </div>
+      </div>
 
 </div>

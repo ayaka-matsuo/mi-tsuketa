@@ -1,16 +1,16 @@
 class TemperamentsController < ApplicationController
 
 def index
-	@temperaments = Temperament.all
+  @temperaments = Temperament.all
 end
 
 def new
-	@temperament = Temperament.new
+  @temperament = Temperament.new
 end
 
 def create
-	@temperament = Temperament.new(temperament_params)
-  	if @temperament.save
+  @temperament = Temperament.new(temperament_params)
+    if @temperament.save
       redirect_to temperaments_path(@temperament), notice: "追加完了"
     else
       @temperament = Temperament.new

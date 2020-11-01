@@ -1,27 +1,28 @@
 
 <table class="table">
 
-	<div class="col-md-12 prof-name">
-		<%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
-	</div>
-	<div class="col-md-12 prof-name">
-		<%= user.name %>さん<br><br>
-		<div class="proffavorite">いいねしたおもちゃ</div><%= user.toyfavorites.count %>
-		<div class="proffavorite">いいねした口コミ</div><%= user.reviewfavorites.count %>
-		<div class="proffavorite">いいねされた口コミ</div><%= @reviews.count %>
-	</div>
-	<tbody>
-		<tr>
-			<th class="active" style="font-size: 9px;">趣味</th>
-			<th><%= user.hobby %></th>
-		</tr>
-		<tr>
-			<th class="active" style="font-size: 9px;">都道府県</th>
-			<th><%= user.place %></th>
-		</tr>
-		<tr>
-			<th class="active" style="font-size: 9px;">自己紹介</th>
-			<th><%= user.introduction %></th>
-		</tr>
-	</tbody>
+  <div class="col-md-12 prof-name">
+    <%= attachment_image_tag user, :profile_image, format: 'jpeg', size: "100x100", fallback: "no_image.jpg" %>
+  </div>
+
+  <div class="col-md-12 prof-name">
+    <%= user.name %>さん<br><br>
+    <div class="proffavorite">いいねしたおもちゃ</div><%= user.toyfavorites.count %>
+      <div class="proffavorite">いいねした口コミ</div><%= user.reviewfavorites.count %>
+        <div class="proffavorite">いいねされた口コミ</div><%= @reviews.count %>
+        </div>
+        <tbody>
+          <tr>
+            <th class="active" style="font-size: 9px;">趣味</th>
+            <th><%= user.hobby %></th>
+          </tr>
+          <tr>
+            <th class="active" style="font-size: 9px;">都道府県</th>
+            <th><%= user.place %></th>
+          </tr>
+          <tr>
+            <th class="active" style="font-size: 9px;">自己紹介</th>
+            <th><%= user.introduction %></th>
+          </tr>
+        </tbody>
 </table>

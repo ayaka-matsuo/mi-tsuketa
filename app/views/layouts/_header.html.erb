@@ -1,135 +1,134 @@
 <header class="navbar navbar-fixed-top navbar-inverse" style="background-color: white">
 <div class="container">
 <header>
-    <nav class="nav navbar-nav navbar-left">
-      <span></span>
-    </nav>
+	<nav class="nav navbar-nav navbar-left">
+		<span></span>
+ 	</nav>
 
-  <% if user_signed_in? %>
+ 	<% if user_signed_in? %>
 
-  <nav>
+ 	<nav>
 
-    <ul class="nav navbar-nav navbar-left" >
-      <div class="logo">
-        <%= link_to root_path do  %>
-        <%= image_tag "logo.jpg", size: "95x69" %>
-        <% end %><!-- ロゴ追加する -->
-      </div>
-    </ul>
-
-
-      <ul class="nav navbar-nav navbar-right">
-
-        <li></li>
-
-        <li>
-          <%= link_to homes_about_path do %>
-            <span class="fas fa-question-circle"></span>
-            み〜つけたの特徴と使い方
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to root_path(anchor: 'ranking') do %>
-            <%= image_tag('王冠のアイコン素材.png') %>
-            ランキング
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to toy_reviews_path(1) do %>
-            <%= image_tag('虫眼鏡アイコン9.png') %>
-            口コミを探す
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to toys_path do %>
-            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-            口コミする
-            </span>
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to user_path(current_user) do %>
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-            マイページ
-            </span>
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to child_archives_path do %>
-            <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-            おもいで
-            </span>
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-              ログアウト
-            </span>
-          <% end %>
-        </li>
-
-      </ul>
+		<ul class="nav navbar-nav navbar-left" >
+			<div class="logo">
+				<%= link_to root_path do %>
+					<%= image_tag "logo.jpg", size: "95x69" %>
+				<% end %>
+			</div>
+ 		</ul>
 
 
-  <% else %>
+		<ul class="nav navbar-nav navbar-right">
+
+ 			<li></li>
+
+			<li>
+				<%= link_to homes_about_path do %>
+					<span class="fas fa-question-circle"></span>
+						み〜つけたの特徴と使い方
+				<% end %>
+			</li>
+
+			<li>
+				<%= link_to root_path(anchor: 'ranking') do %>
+					<%= image_tag('王冠のアイコン素材.png') %>
+						ランキング
+				<% end %>
+			</li>
+
+			<li>
+				<%= link_to toy_reviews_path(1) do %>
+					<%= image_tag('虫眼鏡アイコン9.png') %>
+						口コミを探す
+ 				<% end %>
+			</li>
+
+			<li>
+				<%= link_to toys_path do %>
+ 					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+						口コミする
+					</span>
+				<% end %>
+			</li>
+
+			<li>
+				<%= link_to user_path(current_user) do %>
+					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+ 						マイページ
+					</span>
+				<% end %>
+			</li>
+
+			<li>
+				<%= link_to child_archives_path do %>
+ 					<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+						おもいで
+					</span>
+				<% end %>
+			</li>
+
+			<li>
+				<%= link_to destroy_user_session_path, method: :delete do %>
+ 					<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+						ログアウト
+					</span>
+ 				<% end %>
+			</li>
+		</ul>
 
 
-      <ul class="nav navbar-nav navbar-left" >
+<% else %>
 
-      <div class="logo">
-        <%= link_to root_path do  %>
-        <%= image_tag "logo.jpg", size: "95x69" %>
-        <% end %><!-- ロゴ追加する -->
-      </div>
 
-      </ul>
+	<ul class="nav navbar-nav navbar-left" >
 
-      <ul class="nav navbar-nav navbar-right" >
+		<div class="logo">
+			<%= link_to root_path do %>
+				<%= image_tag "logo.jpg", size: "95x69" %>
+			<% end %>
+ 		</div>
 
-        <li></li>
+	</ul>
 
-        <li>
-          <%= link_to homes_about_path do %>
-            <span class="glyphicon glyphicon-link" aria-hidden="true">
-            ABOUT
-            </span>
-          <% end %>
-        </li>
+	<ul class="nav navbar-nav navbar-right" >
 
-        <li>
-          <%= link_to toy_toysnologin_path(1) do %>
-            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-            口コミを見る
-            </span>
-          <% end %>
-        </li>
+		<li></li>
 
-        <li>
-          <%= link_to new_user_registration_path do %>
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            新規登録
-            </span>
-          <% end %>
-        </li>
+		<li>
+			<%= link_to homes_about_path do %>
+				<span class="glyphicon glyphicon-link" aria-hidden="true">
+					ABOUT
+				</span>
+			<% end %>
+		</li>
 
-        <li>
-          <%= link_to new_user_session_path do %>
-            <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
-              ログイン
-            </span>
-          <% end %>
-        </li>
-      </ul>
+		<li>
+			<%= link_to toy_toysnologin_path(1) do %>
+				<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+					口コミを見る
+				</span>
+			<% end %>
+		</li>
 
-      </nav>
-      <% end %>
+		<li>
+			<%= link_to new_user_registration_path do %>
+				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+					新規登録
+				</span>
+			<% end %>
+		</li>
+
+		<li>
+			<%= link_to new_user_session_path do %>
+				<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+ 					ログイン
+				</span>
+			<% end %>
+		</li>
+	</ul>
+
+</nav>
+<% end %>
 
 </header>
 </header>
