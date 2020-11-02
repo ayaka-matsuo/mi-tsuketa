@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      child:
+        age_year: "年齢（歳）"
+        name: ニックネーム
+        age_month: "年齢（ヶ月）"
+        favorite_thing: "好きなもの"
+        un_favorite_thing: "嫌いなもの"
+        status: "最近よく話す言葉・口癖"
+        temperament_ids: "気質"
+    errors:
+      models:
+        child:
+          attributes:
+            age_year:
+              blank: "が入力されていません。"
+              not_a_number: "は数字で入力して下さい。"
+            age_month:
+              blank: "が入力されていません。"
+              not_a_number: "は数字で入力して下さい。"
+            name:
+              blank: "が入力されていません。"
+            favorite_thing:
+              blank: "が入力されていません。"
+              not_a_number: "は数字で入力して下さい。"
+            un_favorite_thing:
+              blank: "が入力されていません。"
+            status:
+              blank: "が入力されていません。"
+            temperament_ids:
+              blank: "が選択されていません"

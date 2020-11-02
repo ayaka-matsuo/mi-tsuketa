@@ -22,14 +22,14 @@ class ReviewsController < ApplicationController
     @review.age_year = @child.age_year
     @review.age_month = @child.age_month
     review_params_temperament_ids.each do |temperament_id|
-      @review.review_temperaments.build(temperament_id: temperament_id)
+    @review.review_temperaments.build(temperament_id: temperament_id)
     end
-    if @review.save
-      redirect_to toy_path(@toy)
-      flash[:notice] = "口コミを投稿しました"
-
+    if  @review.save
+        redirect_to toy_path(@toy)
+        flash[:notice] = "口コミを投稿しました"
     else
-      render :new and return if params[:back]
+        redirect_to new_toy_review_path
+        flash[:notice] = "口コミが投稿できませんでした"
     end
   end
 

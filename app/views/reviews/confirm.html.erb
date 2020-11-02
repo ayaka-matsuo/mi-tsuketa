@@ -60,6 +60,7 @@
 
 
       <%= simple_form_for [@toy,@review] do |f| %>
+        <%#= render 'layouts/error_messages', locals: { review: [@toy,@review] } %>
         <%= f.input :rate, as: :hidden %>
         <%= f.input :effect_id, as: :hidden %>
         <%= f.input :body, as: :hidden %>
@@ -72,7 +73,7 @@
 
         <div class="actions col-md-offset-2 col-md-8">
           <%= f.submit '投稿する', class: "btn btn-lg btn-base-1 btn-success mt-20 botan" %><br>
-          <%= f.submit '投稿画面に戻る', name: 'back', class: "btn btn-base-1 btn-sm botan" %>
+          <%= link_to '投稿画面に戻る', new_toy_review_path, class: "btn btn-base-1 btn-sm botan" %>
         </div>
       <% end %>
     </div>
